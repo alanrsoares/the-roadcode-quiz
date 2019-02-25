@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 
 export const colors = {
@@ -20,6 +19,7 @@ export const Shell = styled.div`
   background-color: #dedede;
   font-family: Roboto, sans-serif;
   color: #333;
+  min-height: 100vh;
 `;
 
 export const AppContainer = styled.div`
@@ -148,4 +148,16 @@ export const Pill = styled.span<{
         ? icons.check
         : icons.cross
       : colors.primary};
+`;
+
+export const NextButton = styled.button`
+  flex: 1;
+  background-color: ${colors.secondary};
+  font-size: 1.8em;
+  color: white;
+  margin: auto;
+  border-radius: 0.2em;
+  border: none;
+  padding: 0.2em 0.4em;
+  cursor: pointer;
 `;

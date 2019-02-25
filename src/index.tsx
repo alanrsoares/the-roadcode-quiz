@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { render } from "react-dom";
-import styled from "@emotion/styled";
 
 import { shuffle } from "./helpers";
 import { cache as data } from "./db.json";
@@ -20,7 +19,8 @@ import {
   Pill,
   Image,
   Option,
-  Hint
+  Hint,
+  NextButton
 } from "./components";
 
 import "./styles.css";
@@ -28,6 +28,7 @@ import "./styles.css";
 interface QuestionItemProps extends IQuestion {
   index: number;
   onSelect(isCorrect: boolean): void;
+  onNextClick(): void;
 }
 
 function QuestionItem(props: QuestionItemProps) {
@@ -71,16 +72,26 @@ function QuestionItem(props: QuestionItemProps) {
         </Option>
       ))}
       {!!selected && (
-        <Hint>
-          {selected !== props.correctAnswer && (
-            <p style={{ color: colors.negative }}>
-              Correct Answer: {props.correctAnswer}
-            </p>
-          )}
-          {`For more information about this question refer to page ${
-            props.roadCodePage
-          } of the Official New Zealand Road Code.`}
-        </Hint>
+        <>
+          <Hint>
+            {selected !== props.correctAnswer && (
+              <p style={{ color: colors.negative }}>
+                Correct Answer: {props.correctAnswer}
+              </p>
+            )}
+            {`For more information about this question refer to page ${
+              props.roadCodePage
+            } of the Official New Zealand Road Code.`}
+          </Hint>
+          <div style={{ display: "flex", marginTop: ".4em" }}>
+            <NextButton
+              onClick={props.onNextClick}
+              onTouchEnd={props.onNextClick}
+            >
+              Next question
+            </NextButton>
+          </div>
+        </>
       )}
     </QuestionCard>
   );
@@ -109,6 +120,7 @@ interface IQuestionItem {
 
 function App(props: { items: IQuestionItem[] }) {
   const [state, setState] = useState(INITIAL_STATE);
+  const [index, setIndex] = useState(0);
 
   const handleSelect = (isCorrect: boolean) => {
     setState({
@@ -117,6 +129,8 @@ function App(props: { items: IQuestionItem[] }) {
       incorrect: !isCorrect ? state.incorrect + 1 : state.incorrect
     });
   };
+
+  const handleNextClick = () => setIndex(index + 1);
 
   const ratio = (n: number) => (n / props.items.length) * 100;
 
@@ -135,6 +149,8 @@ function App(props: { items: IQuestionItem[] }) {
     }
   ];
 
+  const selectedItem = props.items[index];
+
   return (
     <Shell>
       <ProgressBar>
@@ -149,14 +165,13 @@ function App(props: { items: IQuestionItem[] }) {
       </ProgressText>
       <AppContainer>
         <Header>The Road Code</Header>
-        {props.items.map(({ key, value }, i) => (
-          <QuestionItem
-            key={key}
-            onSelect={handleSelect}
-            index={i + 1}
-            {...value}
-          />
-        ))}
+        <QuestionItem
+          key={selectedItem.key}
+          onSelect={handleSelect}
+          onNextClick={handleNextClick}
+          index={index + 1}
+          {...selectedItem.value}
+        />
       </AppContainer>
     </Shell>
   );
