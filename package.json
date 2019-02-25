@@ -1,10 +1,10 @@
 {
-  "name": "the-road-code-quiz",
+  "name": "the-roadcode-quiz",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "src/index.tsx",
-  "homepage": "https://alanrsoares.github.io/the-road-code-quiz",
+  "homepage": "https://alanrsoares.github.io/the-roadcode-quiz",
   "dependencies": {
     "@emotion/core": "10.0.7",
     "@emotion/styled": "10.0.7",
