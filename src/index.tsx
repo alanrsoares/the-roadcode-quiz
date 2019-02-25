@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { render } from "react-dom";
 
+import registerServiceWorker from "./registerServiceWorker";
 import { shuffle } from "./helpers";
 import { cache as data } from "./db.json";
 
@@ -180,3 +181,5 @@ function App(props: { items: IQuestionItem[] }) {
 const rootElement = document.getElementById("root");
 
 render(<App items={shuffle<IQuestionItem>(data)} />, rootElement);
+
+registerServiceWorker();
