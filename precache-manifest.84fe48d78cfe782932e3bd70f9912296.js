@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/the-roadcode-quiz/static/css/main.f527b99c.chunk.css"
   },
   {
-    "revision": "d7eef422fc2d1d87a4f8d300dc71817a",
+    "revision": "b5075dd2f31af0db8c8439301ab0b359",
     "url": "/the-roadcode-quiz/index.html"
   }
 ];
