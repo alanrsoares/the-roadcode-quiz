@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://alanrsoares.github.io/the-roadcode-quiz/index.html",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
