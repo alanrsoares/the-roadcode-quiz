@@ -31,6 +31,8 @@ export const AppContainer = styled.div`
 export const Header = styled.header`
   font-size: 2em;
   text-align: center;
+  color: ${colors.secondary};
+  font-weight: bold;
 `;
 
 export const ProgressBar = styled.div`
@@ -40,6 +42,7 @@ export const ProgressBar = styled.div`
   background-color: ${colors.neutral};
   height: 1.8em;
   width: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 `;
 
 export const Progress = styled.div<{ ratio: number; color: string }>`
@@ -66,6 +69,7 @@ export const QuestionCard = styled.div`
   border-radius: 0.2em;
   max-width: 400px;
   background-color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 `;
 
 export const Question = styled.div`
@@ -85,6 +89,7 @@ export const QuestionText = styled.div`
 
 export const Image = styled.img`
   width: 8em;
+  height: 8em;
   overflow: hidden;
   border-radius: 50%;
   border: solid 0.2em white;

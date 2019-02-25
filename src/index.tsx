@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, StrictMode } from "react";
 import { render } from "react-dom";
 
 import registerServiceWorker from "./registerServiceWorker";
@@ -160,7 +160,7 @@ function App(props: { items: IQuestionItem[] }) {
         ))}
       </ProgressBar>
       <ProgressText>
-        {state.answered} of {data.length} ({Math.round(progressRatio)}%)
+        {state.answered} of {props.items.length} ({Math.round(progressRatio)}%)
         {!!state.incorrect &&
           ` / ${state.incorrect} wrong answer${state.incorrect > 1 ? "s" : ""}`}
       </ProgressText>
@@ -180,6 +180,12 @@ function App(props: { items: IQuestionItem[] }) {
 
 const rootElement = document.getElementById("root");
 
-render(<App items={shuffle<IQuestionItem>(data)} />, rootElement);
+const app = (
+  <StrictMode>
+    <App items={shuffle<IQuestionItem>(data).slice(0, 40)} />
+  </StrictMode>
+);
+
+render(app, rootElement);
 
 registerServiceWorker();
