@@ -1,6 +1,7 @@
 {
   "name": "the-roadcode-quiz",
   "version": "1.0.0",
+  "repository": "git@github.com:alanrsoares/the-roadcode-quiz.git",
   "description": "",
   "keywords": [],
   "main": "src/index.tsx",
