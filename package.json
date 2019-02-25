@@ -8,13 +8,13 @@
   "dependencies": {
     "@emotion/core": "10.0.7",
     "@emotion/styled": "10.0.7",
-    "react": "16.8.3",
-    "react-dom": "16.8.3",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-scripts": "2.1.5"
   },
   "devDependencies": {
-    "@types/react": "16.7.22",
-    "@types/react-dom": "16.0.11",
+    "@types/react": "^16.8.4",
+    "@types/react-dom": "^16.8.2",
     "gh-pages": "^2.0.1",
     "typescript": "^3.3.3333"
   },

@@ -161,7 +161,7 @@ export const NextButton = styled.button`
   font-size: 1.8em;
   color: white;
   margin: auto;
-  border-radius: 0.2em;
+  border-radius: 0.1em;
   border: none;
   padding: 0.2em 0.4em;
   cursor: pointer;
