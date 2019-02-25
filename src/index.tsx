@@ -48,7 +48,7 @@ function QuestionItem(props: QuestionItemProps) {
           #{props.index}: {props.question}
         </QuestionText>
         <ImageWrapper>
-          <Image src={props.image.uri} />
+          <Image alt="question's image" src={props.image.uri} />
         </ImageWrapper>
       </Question>
       {Object.keys(props.answers).map(key => (
