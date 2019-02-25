@@ -5,7 +5,15 @@ export const colors = {
   secondary: "#3482b9",
   positive: "#49c04a",
   negative: "#d03930",
-  neutral: "#aaa"
+  neutral: "#aaa",
+  hotpink: "#FC8BA4",
+  // alternative pallette
+  lightbrown: "#AD5114",
+  darkbrown: "#663210",
+  asphaltgrey: "#415E6D",
+  lightgrey: "#A0AEB6",
+  lightgreen: "#75B600",
+  olivegreen: "#46600E"
 };
 
 export const icons = {
