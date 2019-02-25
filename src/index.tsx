@@ -131,7 +131,11 @@ function App(props: { items: IQuestionItem[] }) {
     });
   };
 
-  const handleNextClick = () => setIndex(index + 1);
+  const handleNextClick = () => {
+    if (index < props.items.length - 1) {
+      setIndex(index + 1);
+    }
+  };
 
   const ratio = (n: number) => (n / props.items.length) * 100;
 
