@@ -42,7 +42,7 @@ export const ProgressBar = styled.div`
   width: 100%;
 `;
 
-export const Progress = styled.div`
+export const Progress = styled.div<{ ratio: number; color: string }>`
   height: 1.8em;
   background-color: ${props => props.color};
   width: ${props => props.ratio}%;
@@ -92,7 +92,11 @@ export const Image = styled.img`
 
 export const ImageWrapper = styled.div``;
 
-export const Option = styled.div`
+export const Option = styled.div<{
+  isSelected: boolean;
+  isAnswered: boolean;
+  isCorrect: boolean;
+}>`
   display: flex;
   padding: 0.6em 0.2em;
   margin: 0.4em 0;
@@ -116,7 +120,11 @@ export const Hint = styled.div`
   padding: 0.2em;
 `;
 
-export const Pill = styled.span`
+export const Pill = styled.span<{
+  isSelected: boolean;
+  isAnswered: boolean;
+  isCorrect: boolean;
+}>`
   border-radius: 50%;
   min-width: 1.4em;
   min-height: 1.4em;

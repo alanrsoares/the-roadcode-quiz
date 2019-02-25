@@ -25,15 +25,18 @@ import {
 
 import "./styles.css";
 
-function QuestionItem(props) {
-  const [isCorrect, setCorrect] = useState(false);
-  const [selected, setSelected] = useState(null);
+interface QuestionItemProps extends IQuestion {
+  index: number;
+  onSelect(isCorrect: boolean): void;
+}
+
+function QuestionItem(props: QuestionItemProps) {
+  const [selected, setSelected] = useState<string | null>(null);
 
   const handleSelection = (option: string) => () => {
     if (!!selected) return;
     const correct = option === props.correctAnswer;
     setSelected(option);
-    setCorrect(correct);
     props.onSelect(correct);
   };
 
@@ -89,7 +92,22 @@ const INITIAL_STATE = {
   incorrect: 0
 };
 
-function App({ items }) {
+interface IQuestion {
+  question: string;
+  correctAnswer: string;
+  image: {
+    uri: string;
+  };
+  answers: { [key: string]: string };
+  roadCodePage: string;
+}
+
+interface IQuestionItem {
+  key: string;
+  value: IQuestion;
+}
+
+function App(props: { items: IQuestionItem[] }) {
   const [state, setState] = useState(INITIAL_STATE);
 
   const handleSelect = (isCorrect: boolean) => {
@@ -100,7 +118,7 @@ function App({ items }) {
     });
   };
 
-  const ratio = n => (n / items.length) * 100;
+  const ratio = (n: number) => (n / props.items.length) * 100;
 
   const progressRatio = ratio(state.answered);
   const correctRatio = ratio(state.correct);
@@ -131,7 +149,7 @@ function App({ items }) {
       </ProgressText>
       <AppContainer>
         <Header>The Road Code</Header>
-        {items.map(({ key, value }, i) => (
+        {props.items.map(({ key, value }, i) => (
           <QuestionItem
             key={key}
             onSelect={handleSelect}
@@ -145,4 +163,5 @@ function App({ items }) {
 }
 
 const rootElement = document.getElementById("root");
-render(<App items={shuffle(data)} />, rootElement);
+
+render(<App items={shuffle<IQuestionItem>(data)} />, rootElement);
