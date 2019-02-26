@@ -41,7 +41,7 @@ const INITIAL_STATE: State = {
 };
 
 interface Props {
-  items: IQuestionItem[];
+  questions: IQuestionItem[];
 }
 
 type SetStateFn = (value: React.SetStateAction<State>) => void;
@@ -64,7 +64,6 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
       )
     }));
   },
-
   handleOptionSelect(isCorrect: boolean) {
     setState(state => ({
       ...state,
@@ -82,10 +81,10 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
 export default function App(props: Props) {
   const [state, setState] = useState<State>({
     ...INITIAL_STATE,
-    questions: shuffle(props.items).slice(0, INITIAL_STATE.questionsSample)
+    questions: shuffle(props.questions).slice(0, INITIAL_STATE.questionsSample)
   });
 
-  const handlers = makeHandlers(setState, props.items);
+  const handlers = makeHandlers(setState, props.questions);
 
   const ratio = (n: number) => (n / state.questionsSample) * 100;
 
