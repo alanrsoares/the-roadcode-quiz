@@ -9,8 +9,7 @@ import {
   Pill,
   Image,
   Option,
-  Hint,
-  NextButton
+  Hint
 } from "./styled";
 
 import { IQuestion } from "../types";
@@ -18,7 +17,6 @@ import { IQuestion } from "../types";
 interface Props extends IQuestion {
   index: number;
   onSelect(isCorrect: boolean): void;
-  onNextClick(): void;
 }
 
 export default function QuestionItem(props: Props) {

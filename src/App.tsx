@@ -44,14 +44,29 @@ interface Props {
   items: IQuestionItem[];
 }
 
-export default function App(props: Props) {
-  const [state, setState] = useState<State>({
-    ...INITIAL_STATE,
-    questions: shuffle(props.items).slice(0, INITIAL_STATE.questionsSample)
-  });
+type SetStateFn = (value: React.SetStateAction<State>) => void;
 
-  const handleOptionSelect = (isCorrect: boolean) => {
-    setState({
+const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
+  handleNextQuestionClick() {
+    setState(state =>
+      state.index < state.questionsSample - 1
+        ? { ...state, index: state.index + 1, isAnswered: false }
+        : state
+    );
+  },
+  handleResetState() {
+    setState(state => ({
+      ...INITIAL_STATE,
+      questionsSample: state.questionsSample,
+      questions: shuffle<IQuestionItem>(allQuestions).slice(
+        0,
+        state.questionsSample
+      )
+    }));
+  },
+
+  handleOptionSelect(isCorrect: boolean) {
+    setState(state => ({
       ...state,
       answeredCount: state.answeredCount + 1,
       correctCount: isCorrect ? state.correctCount + 1 : state.correctCount,
@@ -60,14 +75,17 @@ export default function App(props: Props) {
         : state.incorrectCount,
       isDone: state.index === state.questionsSample - 1,
       isAnswered: true
-    });
-  };
+    }));
+  }
+});
 
-  const handleNextQuestionClick = () => {
-    if (state.index < state.questionsSample - 1) {
-      setState({ ...state, index: state.index + 1, isAnswered: false });
-    }
-  };
+export default function App(props: Props) {
+  const [state, setState] = useState<State>({
+    ...INITIAL_STATE,
+    questions: shuffle(props.items).slice(0, INITIAL_STATE.questionsSample)
+  });
+
+  const handlers = makeHandlers(setState, props.items);
 
   const ratio = (n: number) => (n / state.questionsSample) * 100;
 
@@ -111,8 +129,7 @@ export default function App(props: Props) {
         ) : (
           <QuestionItem
             key={selectedItem.key}
-            onSelect={handleOptionSelect}
-            onNextClick={handleNextQuestionClick}
+            onSelect={handlers.handleOptionSelect}
             index={state.index + 1}
             {...selectedItem.value}
           />
@@ -120,11 +137,11 @@ export default function App(props: Props) {
 
         {!!state.isAnswered &&
           (state.isDone ? (
-            <NextButton onClick={handleNextQuestionClick}>
+            <NextButton onClick={handlers.handleResetState}>
               Play again
             </NextButton>
           ) : (
-            <NextButton onClick={handleNextQuestionClick}>
+            <NextButton onClick={handlers.handleNextQuestionClick}>
               Next question
             </NextButton>
           ))}
