@@ -50,7 +50,7 @@ export default function App(props: Props) {
     questions: shuffle(props.items).slice(0, INITIAL_STATE.questionsSample)
   });
 
-  const handleSelect = (isCorrect: boolean) => {
+  const handleOptionSelect = (isCorrect: boolean) => {
     setState({
       ...state,
       answeredCount: state.answeredCount + 1,
@@ -63,7 +63,7 @@ export default function App(props: Props) {
     });
   };
 
-  const handleNextClick = () => {
+  const handleNextQuestionClick = () => {
     if (state.index < state.questionsSample - 1) {
       setState({ ...state, index: state.index + 1, isAnswered: false });
     }
@@ -111,8 +111,8 @@ export default function App(props: Props) {
         ) : (
           <QuestionItem
             key={selectedItem.key}
-            onSelect={handleSelect}
-            onNextClick={handleNextClick}
+            onSelect={handleOptionSelect}
+            onNextClick={handleNextQuestionClick}
             index={state.index + 1}
             {...selectedItem.value}
           />
@@ -120,9 +120,13 @@ export default function App(props: Props) {
 
         {!!state.isAnswered &&
           (state.isDone ? (
-            <NextButton onClick={handleNextClick}>Play again</NextButton>
+            <NextButton onClick={handleNextQuestionClick}>
+              Play again
+            </NextButton>
           ) : (
-            <NextButton onClick={handleNextClick}>Next question</NextButton>
+            <NextButton onClick={handleNextQuestionClick}>
+              Next question
+            </NextButton>
           ))}
       </AppContainer>
     </Shell>
