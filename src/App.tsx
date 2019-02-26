@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { IQuestionItem } from "./types";
+
 import {
   colors,
   Shell,
@@ -7,12 +9,11 @@ import {
   Progress,
   ProgressText,
   AppContainer,
-  Header
+  Header,
+  QuestionItem
 } from "./components";
 
 import "./styles.css";
-import { IQuestionItem } from "./types";
-import QuestionItem from "./components/QuestionItem";
 
 const INITIAL_STATE = {
   answered: 0,
