@@ -174,3 +174,5 @@ export const NextButton = styled.button`
   padding: 0.2em 0.4em;
   cursor: pointer;
 `;
+
+export const SummaryCard = styled.div``;

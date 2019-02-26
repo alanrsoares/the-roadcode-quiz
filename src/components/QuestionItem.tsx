@@ -13,7 +13,6 @@ import {
   NextButton
 } from "./styled";
 
-import "./styles.css";
 import { IQuestion } from "../types";
 
 interface Props extends IQuestion {
@@ -63,26 +62,16 @@ export default function QuestionItem(props: Props) {
         </Option>
       ))}
       {!!selected && (
-        <>
-          <Hint>
-            {selected !== props.correctAnswer && (
-              <p style={{ color: colors.negative }}>
-                Correct Answer: {props.correctAnswer}
-              </p>
-            )}
-            {`For more information about this question refer to page ${
-              props.roadCodePage
-            } of the Official New Zealand Road Code.`}
-          </Hint>
-          <div style={{ display: "flex", marginTop: ".4em" }}>
-            <NextButton
-              onClick={props.onNextClick}
-              onTouchEnd={props.onNextClick}
-            >
-              Next question
-            </NextButton>
-          </div>
-        </>
+        <Hint>
+          {selected !== props.correctAnswer && (
+            <p style={{ color: colors.negative }}>
+              Correct Answer: {props.correctAnswer}
+            </p>
+          )}
+          {`For more information about this question refer to page ${
+            props.roadCodePage
+          } of the Official New Zealand Road Code.`}
+        </Hint>
       )}
     </QuestionCard>
   );

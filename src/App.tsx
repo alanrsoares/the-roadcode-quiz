@@ -10,40 +10,70 @@ import {
   ProgressText,
   AppContainer,
   Header,
-  QuestionItem
+  QuestionItem,
+  NextButton,
+  SummaryCard
 } from "./components";
 
 import "./styles.css";
+import { shuffle } from "./helpers";
 
-const INITIAL_STATE = {
-  answered: 0,
-  correct: 0,
-  incorrect: 0
+interface State {
+  answeredCount: number;
+  correctCount: number;
+  incorrectCount: number;
+  isDone: boolean;
+  index: number;
+  isAnswered: boolean;
+  questions: IQuestionItem[];
+  questionsSample: number;
+}
+
+const INITIAL_STATE: State = {
+  answeredCount: 0,
+  correctCount: 0,
+  incorrectCount: 0,
+  isDone: false,
+  index: 0,
+  isAnswered: false,
+  questions: [],
+  questionsSample: 35
 };
 
-export default function App(props: { items: IQuestionItem[] }) {
-  const [state, setState] = useState(INITIAL_STATE);
-  const [index, setIndex] = useState(0);
+interface Props {
+  items: IQuestionItem[];
+}
+
+export default function App(props: Props) {
+  const [state, setState] = useState<State>({
+    ...INITIAL_STATE,
+    questions: shuffle(props.items).slice(0, INITIAL_STATE.questionsSample)
+  });
 
   const handleSelect = (isCorrect: boolean) => {
     setState({
-      answered: state.answered + 1,
-      correct: isCorrect ? state.correct + 1 : state.correct,
-      incorrect: !isCorrect ? state.incorrect + 1 : state.incorrect
+      ...state,
+      answeredCount: state.answeredCount + 1,
+      correctCount: isCorrect ? state.correctCount + 1 : state.correctCount,
+      incorrectCount: !isCorrect
+        ? state.incorrectCount + 1
+        : state.incorrectCount,
+      isDone: state.index === state.questionsSample - 1,
+      isAnswered: true
     });
   };
 
   const handleNextClick = () => {
-    if (index < props.items.length - 1) {
-      setIndex(index + 1);
+    if (state.index < state.questionsSample - 1) {
+      setState({ ...state, index: state.index + 1, isAnswered: false });
     }
   };
 
-  const ratio = (n: number) => (n / props.items.length) * 100;
+  const ratio = (n: number) => (n / state.questionsSample) * 100;
 
-  const progressRatio = ratio(state.answered);
-  const correctRatio = ratio(state.correct);
-  const incorrectRatio = ratio(state.incorrect);
+  const progressRatio = ratio(state.answeredCount);
+  const correctRatio = ratio(state.correctCount);
+  const incorrectRatio = ratio(state.incorrectCount);
 
   const ratios = [
     {
@@ -56,7 +86,7 @@ export default function App(props: { items: IQuestionItem[] }) {
     }
   ];
 
-  const selectedItem = props.items[index];
+  const selectedItem = state.questions[state.index];
 
   return (
     <Shell>
@@ -66,19 +96,34 @@ export default function App(props: { items: IQuestionItem[] }) {
         ))}
       </ProgressBar>
       <ProgressText>
-        {state.answered} of {props.items.length} ({Math.round(progressRatio)}%)
-        {!!state.incorrect &&
-          ` / ${state.incorrect} wrong answer${state.incorrect > 1 ? "s" : ""}`}
+        {state.answeredCount} of {state.questionsSample} (
+        {Math.round(progressRatio)}%)
+        {!!state.incorrectCount &&
+          ` / ${state.incorrectCount} wrong answer${
+            state.incorrectCount > 1 ? "s" : ""
+          }`}
       </ProgressText>
       <AppContainer>
         <Header>The Road Code</Header>
-        <QuestionItem
-          key={selectedItem.key}
-          onSelect={handleSelect}
-          onNextClick={handleNextClick}
-          index={index + 1}
-          {...selectedItem.value}
-        />
+
+        {state.isDone ? (
+          <SummaryCard>completed</SummaryCard>
+        ) : (
+          <QuestionItem
+            key={selectedItem.key}
+            onSelect={handleSelect}
+            onNextClick={handleNextClick}
+            index={state.index + 1}
+            {...selectedItem.value}
+          />
+        )}
+
+        {!!state.isAnswered &&
+          (state.isDone ? (
+            <NextButton onClick={handleNextClick}>Play again</NextButton>
+          ) : (
+            <NextButton onClick={handleNextClick}>Next question</NextButton>
+          ))}
       </AppContainer>
     </Shell>
   );
