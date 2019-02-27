@@ -133,11 +133,27 @@ export const Hint = styled.div`
   padding: 0.2em;
 `;
 
-export const Pill = styled.span<{
+interface PillProps {
   isSelected: boolean;
   isAnswered: boolean;
   isCorrect: boolean;
-}>`
+}
+
+const getPillBackground = (props: PillProps) =>
+  props.isAnswered && (props.isSelected || props.isCorrect)
+    ? props.isCorrect
+      ? icons.check
+      : icons.cross
+    : colors.primary;
+
+const getPillBorder = (props: PillProps) =>
+  props.isAnswered && (props.isSelected || props.isCorrect)
+    ? props.isCorrect
+      ? `solid 0.1em white`
+      : `none`
+    : "solid 0.1em #333";
+
+export const Pill = styled.span<PillProps>`
   border-radius: 50%;
   min-width: 1.4em;
   min-height: 1.4em;
@@ -147,20 +163,9 @@ export const Pill = styled.span<{
   margin-right: 0.4em;
   margin-left: 0.1em;
   font-weight: bold;
-  border: solid
-    ${props =>
-      props.isAnswered && (props.isSelected || props.isCorrect)
-        ? props.isCorrect
-          ? `.1em white`
-          : `0`
-        : "0.1em #333"};
   padding: 0.2em;
-  background: ${props =>
-    props.isAnswered && (props.isSelected || props.isCorrect)
-      ? props.isCorrect
-        ? icons.check
-        : icons.cross
-      : colors.primary};
+  background: ${getPillBackground};
+  border: ${getPillBorder};
 `;
 
 export const NextButton = styled.button`
