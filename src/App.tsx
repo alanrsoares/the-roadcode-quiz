@@ -18,6 +18,8 @@ import {
 import "./styles.css";
 import { shuffle } from "./helpers";
 
+type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
+
 interface State {
   answeredCount: number;
   correctCount: number;
@@ -27,6 +29,7 @@ interface State {
   isAnswered: boolean;
   questions: IQuestionItem[];
   questionsSample: number;
+  status: Status;
 }
 
 const INITIAL_STATE: State = {
@@ -37,7 +40,8 @@ const INITIAL_STATE: State = {
   index: 0,
   isAnswered: false,
   questions: [],
-  questionsSample: 35
+  questionsSample: 35,
+  status: "IN_PROGRESS"
 };
 
 interface Props {
@@ -65,16 +69,30 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
     }));
   },
   handleOptionSelect(isCorrect: boolean) {
-    setState(state => ({
-      ...state,
-      answeredCount: state.answeredCount + 1,
-      correctCount: isCorrect ? state.correctCount + 1 : state.correctCount,
-      incorrectCount: !isCorrect
+    setState(state => {
+      const isDone = state.index === state.questionsSample - 1;
+      const incorrectCount = !isCorrect
         ? state.incorrectCount + 1
-        : state.incorrectCount,
-      isDone: state.index === state.questionsSample - 1,
-      isAnswered: true
-    }));
+        : state.incorrectCount;
+      const correctCount = isCorrect
+        ? state.correctCount + 1
+        : state.correctCount;
+      const isFailed = incorrectCount >= 3;
+
+      return {
+        ...state,
+        answeredCount: state.answeredCount + 1,
+        correctCount,
+        incorrectCount,
+        isDone: isDone || isFailed,
+        isAnswered: true,
+        status: isDone
+          ? incorrectCount >= 3
+            ? "FAILED"
+            : "PASSED"
+          : "IN_PROGRESS"
+      };
+    });
   }
 });
 
@@ -108,8 +126,8 @@ export default function App(props: Props) {
   return (
     <Shell>
       <ProgressBar>
-        {ratios.map(radio => (
-          <Progress key={radio.color} ratio={radio.ratio} color={radio.color} />
+        {ratios.map(({ color, ratio }) => (
+          <Progress key={color} ratio={ratio} color={color} />
         ))}
       </ProgressBar>
       <ProgressText>
