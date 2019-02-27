@@ -32,7 +32,7 @@ export const Shell = styled.div`
 
 export const AppContainer = styled.div`
   margin: 0 auto;
-  padding-top 40px;
+  padding-top: 40px;
   max-width: 400px;
 `;
 
