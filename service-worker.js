@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/the-roadcode-quiz/precache-manifest.5dc6ccd2968c0ace5e43da91d44e61cc.js"
+  "/the-roadcode-quiz/precache-manifest.5a75f6ea8775fe8d3f153816ff02701f.js"
 );
 
 workbox.clientsClaim();
