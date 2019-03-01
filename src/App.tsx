@@ -32,6 +32,7 @@ interface State {
   questions: IQuestionItem[];
   questionsSample: number;
   status: Status;
+  selectedOption: string | null;
 }
 
 const INITIAL_STATE: State = {
@@ -43,7 +44,8 @@ const INITIAL_STATE: State = {
   isAnswered: false,
   questions: [],
   questionsSample: 35,
-  status: "IN_PROGRESS"
+  status: "IN_PROGRESS",
+  selectedOption: null
 };
 
 interface Props {
@@ -56,7 +58,12 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
   handleNextQuestionClick() {
     setState(state =>
       state.index < state.questionsSample - 1
-        ? { ...state, index: state.index + 1, isAnswered: false }
+        ? {
+            ...state,
+            index: state.index + 1,
+            isAnswered: false,
+            selectedOption: null
+          }
         : state
     );
   },
@@ -70,7 +77,7 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
       )
     }));
   },
-  handleOptionSelect(isCorrect: boolean) {
+  handleOptionSelect(selectedOption: string, isCorrect: boolean) {
     setState(state => {
       const isDone = state.index === state.questionsSample - 1;
       const incorrectCount = !isCorrect
@@ -83,6 +90,7 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
 
       return {
         ...state,
+        selectedOption,
         answeredCount: state.answeredCount + 1,
         correctCount,
         incorrectCount,
@@ -180,6 +188,7 @@ export default function App(props: Props) {
             key={selectedItem.key}
             onSelect={handlers.handleOptionSelect}
             index={state.index + 1}
+            selected={state.selectedOption}
             {...selectedItem.value}
           />
         )}

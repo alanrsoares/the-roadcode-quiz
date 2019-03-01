@@ -16,17 +16,15 @@ import { IQuestion } from "../types";
 
 interface Props extends IQuestion {
   index: number;
-  onSelect(isCorrect: boolean): void;
+  selected: string | null;
+  onSelect(selectedOption: string, isCorrect: boolean): void;
 }
 
 export default function QuestionItem(props: Props) {
-  const [selected, setSelected] = useState<string | null>(null);
-
   const handleSelection = (option: string) => () => {
-    if (!!selected) return;
-    const correct = option === props.correctAnswer;
-    setSelected(option);
-    props.onSelect(correct);
+    if (!!props.selected) return;
+
+    props.onSelect(option, option === props.correctAnswer);
   };
 
   return (
@@ -43,25 +41,26 @@ export default function QuestionItem(props: Props) {
         <Option
           key={key}
           onClick={handleSelection(key)}
-          isAnswered={!!selected}
+          isAnswered={!!props.selected}
           isCorrect={key === props.correctAnswer}
-          isSelected={key === selected}
+          isSelected={key === props.selected}
         >
           <Pill
-            isAnswered={!!selected}
+            isAnswered={!!props.selected}
             isCorrect={key === props.correctAnswer}
-            isSelected={key === selected}
+            isSelected={key === props.selected}
           >
-            {!!selected && (key === selected || key === props.correctAnswer)
+            {!!props.selected &&
+            (key === props.selected || key === props.correctAnswer)
               ? ""
               : key}
           </Pill>
           <div>{props.answers[key]}</div>
         </Option>
       ))}
-      {!!selected && (
+      {!!props.selected && (
         <Hint>
-          {selected !== props.correctAnswer && (
+          {props.selected !== props.correctAnswer && (
             <p style={{ color: colors.negative }}>
               Correct Answer: {props.correctAnswer}
             </p>
