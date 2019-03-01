@@ -12,6 +12,8 @@ import {
   Header,
   QuestionItem,
   NextButton,
+  ButtonContainer,
+  Card,
   SummaryCard
 } from "./components";
 
@@ -86,11 +88,12 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
         incorrectCount,
         isDone: isDone || isFailed,
         isAnswered: true,
-        status: isDone
-          ? incorrectCount >= 3
-            ? "FAILED"
-            : "PASSED"
-          : "IN_PROGRESS"
+        status:
+          isDone || incorrectCount >= 3
+            ? incorrectCount >= 3
+              ? "FAILED"
+              : "PASSED"
+            : "IN_PROGRESS"
       };
     });
   }
@@ -142,7 +145,17 @@ export default function App(props: Props) {
         <Header>The Road Code</Header>
 
         {state.isDone ? (
-          <SummaryCard>completed</SummaryCard>
+          <SummaryCard
+            color={
+              state.status === "FAILED" ? colors.negative : colors.positive
+            }
+          >
+            {state.status === "FAILED"
+              ? `Sorry, you failed ${
+                  state.incorrectCount
+                } questions. Try again.`
+              : "Congratulations, you passed the test!"}
+          </SummaryCard>
         ) : (
           <QuestionItem
             key={selectedItem.key}
@@ -151,17 +164,18 @@ export default function App(props: Props) {
             {...selectedItem.value}
           />
         )}
-
-        {!!state.isAnswered &&
-          (state.isDone ? (
-            <NextButton onClick={handlers.handleResetState}>
-              Play again
-            </NextButton>
-          ) : (
-            <NextButton onClick={handlers.handleNextQuestionClick}>
-              Next question
-            </NextButton>
-          ))}
+        <ButtonContainer>
+          {!!state.isAnswered &&
+            (state.isDone ? (
+              <NextButton onClick={handlers.handleResetState}>
+                Play again
+              </NextButton>
+            ) : (
+              <NextButton onClick={handlers.handleNextQuestionClick}>
+                Next question
+              </NextButton>
+            ))}
+        </ButtonContainer>
       </AppContainer>
     </Shell>
   );

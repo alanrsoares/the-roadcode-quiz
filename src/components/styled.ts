@@ -79,13 +79,25 @@ export const ProgressText = styled.div`
   padding: 0.3em 0.4em;
 `;
 
-export const QuestionCard = styled.div`
-  margin: 1em auto;
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 10vh;
+  margin: 1em 0.2em;
   padding: 0.3em;
   border-radius: 0.2em;
-  max-width: 400px;
   background-color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+`;
+
+export const SummaryCard = styled(Card)`
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+  font-weight: bold;
+  color: ${colors.white};
+  font-size: 1.2em;
+  background-color: ${props => props.color};
 `;
 
 export const Question = styled.div`
@@ -188,15 +200,25 @@ export const Pill = styled.span<PillProps>`
   border: ${getPillBorder};
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-end;
+  width: 100%;
+  @media screen and (max-width: 600px) {
+    flex: 1;
+  }
+`;
+
 export const NextButton = styled.button`
   background-color: ${colors.secondary};
   font-size: 1.8em;
   color: white;
-  margin: auto;
-  border-radius: 0.1em;
   border: none;
+  border-radius: 0.1em;
   padding: 0.2em 0.4em;
-  align-self: flex-end;
+  flex: 1;
+  @media screen and (max-width: 600px) {
+    align-self: flex-end;
+  }
 `;
-
-export const SummaryCard = styled.div``;

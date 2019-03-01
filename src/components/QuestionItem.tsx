@@ -2,7 +2,7 @@ import React, { useState, StrictMode } from "react";
 
 import {
   colors,
-  QuestionCard,
+  Card,
   Question,
   QuestionText,
   ImageWrapper,
@@ -30,7 +30,7 @@ export default function QuestionItem(props: Props) {
   };
 
   return (
-    <QuestionCard>
+    <Card>
       <Question>
         <QuestionText>
           #{props.index}: {props.question}
@@ -71,6 +71,6 @@ export default function QuestionItem(props: Props) {
           } of the Official New Zealand Road Code.`}
         </Hint>
       )}
-    </QuestionCard>
+    </Card>
   );
 }
