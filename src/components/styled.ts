@@ -24,6 +24,7 @@ export const icons = {
 };
 
 export const Shell = styled.div`
+  display: flex;
   background-color: #dedede;
   font-family: Roboto, sans-serif;
   color: #333;
@@ -31,9 +32,12 @@ export const Shell = styled.div`
 `;
 
 export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding-top: 40px;
   max-width: 400px;
+  flex-grow: 1;
 `;
 
 export const Header = styled.header`
@@ -169,7 +173,6 @@ export const Pill = styled.span<PillProps>`
 `;
 
 export const NextButton = styled.button`
-  flex: 1;
   background-color: ${colors.secondary};
   font-size: 1.8em;
   color: white;
@@ -177,7 +180,7 @@ export const NextButton = styled.button`
   border-radius: 0.1em;
   border: none;
   padding: 0.2em 0.4em;
-  cursor: pointer;
+  align-self: flex-end;
 `;
 
 export const SummaryCard = styled.div``;
