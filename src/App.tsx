@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { IQuestionItem } from "./types";
 
@@ -99,10 +99,29 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
   }
 });
 
+const LS_KEY = "@THE_ROAD_QUIZ";
+
+class Storage {
+  static persist(value: Object) {
+    localStorage.setItem(LS_KEY, JSON.stringify(value));
+  }
+
+  static read(questions: IQuestionItem[]): State {
+    const value = localStorage.getItem(LS_KEY);
+    return value !== null
+      ? JSON.parse(value)
+      : { ...INITIAL_STATE, questions: shuffle(questions) };
+  }
+}
+
 export default function App(props: Props) {
-  const [state, setState] = useState<State>({
-    ...INITIAL_STATE,
-    questions: shuffle(props.questions).slice(0, INITIAL_STATE.questionsSample)
+  const [state, setState] = useState<State>(
+    Storage.read(props.questions.slice(0, INITIAL_STATE.questionsSample))
+  );
+
+  useEffect(() => {
+    console.log("persisting");
+    Storage.persist(state);
   });
 
   const handlers = makeHandlers(setState, props.questions);
