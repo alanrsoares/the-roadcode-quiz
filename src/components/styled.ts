@@ -6,7 +6,11 @@ export const colors = {
   positive: "#49c04a",
   negative: "#d03930",
   neutral: "#aaa",
+  muted: "#eaeaea",
   hotpink: "#FC8BA4",
+  black: "#333",
+  white: "#fff",
+  gray: "#ccc",
   // alternative pallette
   lightbrown: "#AD5114",
   darkbrown: "#663210",
@@ -27,7 +31,7 @@ export const Shell = styled.div`
   display: flex;
   background-color: #dedede;
   font-family: Roboto, sans-serif;
-  color: #333;
+  color: ${colors.black};
   min-height: 100vh;
 `;
 
@@ -122,6 +126,13 @@ const getOptionDisplay = (props: OptionProps) =>
       : "none"
     : "flex";
 
+const getOptionBackgroundColor = (props: OptionProps) =>
+  props.isAnswered && props.isSelected
+    ? props.isCorrect
+      ? colors.positive
+      : colors.negative
+    : colors.muted;
+
 export const Option = styled.div<OptionProps>`
   display: ${getOptionDisplay};
   padding: 0.6em 0.2em;
@@ -129,15 +140,11 @@ export const Option = styled.div<OptionProps>`
   align-items: center;
   border-radius: 0.2em;
   cursor: ${props => (props.isAnswered ? "" : "pointer")};
-  background-color: ${props =>
-    props.isAnswered && props.isSelected
-      ? props.isCorrect
-        ? colors.positive
-        : colors.negative
-      : "#eaeaea"};
-  color: ${props => (props.isAnswered && props.isSelected ? "#fff" : "#333")};
+  background-color: ${getOptionBackgroundColor};
+  color: ${props =>
+    props.isAnswered && props.isSelected ? colors.white : colors.black};
   :hover {
-    background-color: ${props => (props.isAnswered ? "" : "#ccc")};
+    background-color: ${props => (props.isAnswered ? "" : colors.gray)};
   }
 `;
 
@@ -162,9 +169,9 @@ const getPillBackground = (props: PillProps) =>
 const getPillBorder = (props: PillProps) =>
   props.isAnswered && (props.isSelected || props.isCorrect)
     ? props.isCorrect
-      ? `solid 0.1em white`
+      ? `solid 0.1em ${colors.white}`
       : `none`
-    : "solid 0.1em #333";
+    : `solid 0.1em ${colors.black}`;
 
 export const Pill = styled.span<PillProps>`
   border-radius: 50%;
