@@ -109,12 +109,21 @@ export const Image = styled.img`
 
 export const ImageWrapper = styled.div``;
 
-export const Option = styled.div<{
+interface OptionProps {
   isSelected: boolean;
   isAnswered: boolean;
   isCorrect: boolean;
-}>`
-  display: flex;
+}
+
+const getOptionDisplay = (props: OptionProps) =>
+  props.isAnswered
+    ? props.isSelected || props.isCorrect
+      ? "flex"
+      : "none"
+    : "flex";
+
+export const Option = styled.div<OptionProps>`
+  display: ${getOptionDisplay};
   padding: 0.6em 0.2em;
   margin: 0.4em 0;
   align-items: center;
