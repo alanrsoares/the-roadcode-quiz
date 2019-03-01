@@ -216,9 +216,10 @@ export const NextButton = styled.button`
   color: white;
   border: none;
   border-radius: 0.1em;
-  padding: 0.2em 0.4em;
+  padding: 0.3em 0.6em;
   flex: 1;
   @media screen and (max-width: 600px) {
     align-self: flex-end;
+    border-radius: 0;
   }
 `;
