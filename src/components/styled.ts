@@ -83,11 +83,14 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 10vh;
-  margin: 1em 0.4em;
+  margin: 1em 0;
   padding: 0.3em;
   border-radius: 0.2em;
   background-color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  @media screen and (max-width: 600px) {
+    margin: 1em 0.4em;
+  }
 `;
 
 export const SummaryCard = styled(Card)`
