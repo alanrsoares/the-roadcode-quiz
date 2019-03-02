@@ -83,7 +83,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 10vh;
-  margin: 1em 0.2em;
+  margin: 1em 0.4em;
   padding: 0.3em;
   border-radius: 0.2em;
   background-color: white;
