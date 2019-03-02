@@ -165,7 +165,6 @@ export default function App(props: Props) {
       </ProgressText>
       <AppContainer>
         <Header>The Road Quiz</Header>
-
         {state.isDone ? (
           <SummaryCard
             color={
