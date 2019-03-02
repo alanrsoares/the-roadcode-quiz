@@ -86,7 +86,7 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
       const correctCount = isCorrect
         ? state.correctCount + 1
         : state.correctCount;
-      const isFailed = incorrectCount >= 3;
+      const isFailed = incorrectCount > 3;
 
       return {
         ...state,
@@ -96,12 +96,7 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
         incorrectCount,
         isDone: isDone || isFailed,
         isAnswered: true,
-        status:
-          isDone || incorrectCount >= 3
-            ? incorrectCount >= 3
-              ? "FAILED"
-              : "PASSED"
-            : "IN_PROGRESS"
+        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS"
       };
     });
   }
