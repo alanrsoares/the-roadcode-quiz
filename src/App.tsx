@@ -164,7 +164,7 @@ export default function App(props: Props) {
           }`}
       </ProgressText>
       <AppContainer>
-        <Header>The Road Code</Header>
+        <Header>The Road Quiz</Header>
 
         {state.isDone ? (
           <SummaryCard
