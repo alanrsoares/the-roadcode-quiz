@@ -16,7 +16,7 @@ import {
   SummaryCard
 } from "./components";
 
-import { shuffle } from "./helpers";
+import { shuffle, ratio } from "./helpers";
 import Storage from "./Storage";
 import "./styles.css";
 
@@ -54,8 +54,11 @@ interface Props {
 
 type SetStateFn = (value: React.SetStateAction<State>) => void;
 
-const makeHandlers = (setState: SetStateFn, questions: IQuestionItem[]) => ({
-  handleNextQuestionClick() {
+const makeActionHandlers = (
+  setState: SetStateFn,
+  questions: IQuestionItem[]
+) => ({
+  onNextQuestionClick() {
     setState(state =>
       state.index < state.questionsSample - 1
         ? {
@@ -67,14 +70,14 @@ const makeHandlers = (setState: SetStateFn, questions: IQuestionItem[]) => ({
         : state
     );
   },
-  handleResetState() {
+  onResetState() {
     setState(state => ({
       ...INITIAL_STATE,
       questionsSample: state.questionsSample,
       questions: shuffle(questions).slice(0, state.questionsSample)
     }));
   },
-  handleOptionSelect(selectedOption: string, isCorrect: boolean) {
+  onOptionSelection(selectedOption: string, isCorrect: boolean) {
     setState(state => {
       const isDone = state.index === state.questionsSample - 1;
       const incorrectCount = !isCorrect
@@ -100,25 +103,22 @@ const makeHandlers = (setState: SetStateFn, questions: IQuestionItem[]) => ({
 });
 
 export default function App(props: Props) {
-  const [state, setState] = useState<State>(
-    Storage.read({
-      ...INITIAL_STATE,
-      questions: props.questions.slice(0, INITIAL_STATE.questionsSample)
-    })
-  );
+  const defaultState = {
+    ...INITIAL_STATE,
+    questions: props.questions.slice(0, INITIAL_STATE.questionsSample)
+  };
 
-  useEffect(() => {
-    console.log("persisting");
-    Storage.persist(state);
-  });
+  const [state, setState] = useState<State>(Storage.read(defaultState));
 
-  const handlers = makeHandlers(setState, props.questions);
+  useEffect(() => Storage.persist(state));
 
-  const ratio = (n: number) => (n / state.questionsSample) * 100;
+  const actions = makeActionHandlers(setState, props.questions);
 
-  const progressRatio = ratio(state.answeredCount);
-  const correctRatio = ratio(state.correctCount);
-  const incorrectRatio = ratio(state.incorrectCount);
+  const getSampleRatio = ratio(state.questionsSample);
+
+  const progressRatio = getSampleRatio(state.answeredCount);
+  const correctRatio = getSampleRatio(state.correctCount);
+  const incorrectRatio = getSampleRatio(state.incorrectCount);
 
   const ratios = [
     {
@@ -165,7 +165,7 @@ export default function App(props: Props) {
         ) : (
           <QuestionItem
             key={selectedItem.key}
-            onSelect={handlers.handleOptionSelect}
+            onSelect={actions.onOptionSelection}
             index={state.index + 1}
             selected={state.selectedOption}
             {...selectedItem.value}
@@ -174,11 +174,9 @@ export default function App(props: Props) {
         <ButtonContainer>
           {!!state.isAnswered &&
             (state.isDone ? (
-              <NextButton onClick={handlers.handleResetState}>
-                Play again
-              </NextButton>
+              <NextButton onClick={actions.onResetState}>Play again</NextButton>
             ) : (
-              <NextButton onClick={handlers.handleNextQuestionClick}>
+              <NextButton onClick={actions.onNextQuestionClick}>
                 Next question
               </NextButton>
             ))}

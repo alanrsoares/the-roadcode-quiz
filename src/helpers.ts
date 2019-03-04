@@ -17,3 +17,5 @@ export function shuffle<T>(array: T[]) {
 
   return array;
 }
+
+export const ratio = (length: number) => (n: number) => (n / length) * 100;
