@@ -55,7 +55,7 @@ interface Props {
 
 type SetStateFn = (value: React.SetStateAction<State>) => void;
 
-const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
+const makeHandlers = (setState: SetStateFn, questions: IQuestionItem[]) => ({
   handleNextQuestionClick() {
     setState(state =>
       state.index < state.questionsSample - 1
@@ -72,10 +72,7 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
     setState(state => ({
       ...INITIAL_STATE,
       questionsSample: state.questionsSample,
-      questions: shuffle<IQuestionItem>(allQuestions).slice(
-        0,
-        state.questionsSample
-      )
+      questions: shuffle(questions).slice(0, state.questionsSample)
     }));
   },
   handleOptionSelect(selectedOption: string, isCorrect: boolean) {
