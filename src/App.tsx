@@ -13,7 +13,6 @@ import {
   QuestionItem,
   NextButton,
   ButtonContainer,
-  Card,
   SummaryCard
 } from "./components";
 
