@@ -16,9 +16,9 @@ import {
   SummaryCard
 } from "./components";
 
-import "./styles.css";
 import { shuffle } from "./helpers";
-import { Storage } from "./Storage";
+import Storage from "./Storage";
+import "./styles.css";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 

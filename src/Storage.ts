@@ -1,6 +1,6 @@
 const LS_KEY = "@THE_ROAD_QUIZ";
 
-export class Storage {
+export default class Storage {
   static persist<T extends {}>(value: T) {
     localStorage.setItem(LS_KEY, JSON.stringify(value));
   }
