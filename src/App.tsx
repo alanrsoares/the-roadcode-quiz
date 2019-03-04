@@ -19,6 +19,7 @@ import {
 
 import "./styles.css";
 import { shuffle } from "./helpers";
+import { Storage } from "./Storage";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 
@@ -102,24 +103,12 @@ const makeHandlers = (setState: SetStateFn, allQuestions: IQuestionItem[]) => ({
   }
 });
 
-const LS_KEY = "@THE_ROAD_QUIZ";
-
-class Storage {
-  static persist(value: Object) {
-    localStorage.setItem(LS_KEY, JSON.stringify(value));
-  }
-
-  static read(questions: IQuestionItem[]): State {
-    const value = localStorage.getItem(LS_KEY);
-    return value !== null
-      ? JSON.parse(value)
-      : { ...INITIAL_STATE, questions: shuffle(questions) };
-  }
-}
-
 export default function App(props: Props) {
   const [state, setState] = useState<State>(
-    Storage.read(props.questions.slice(0, INITIAL_STATE.questionsSample))
+    Storage.read({
+      ...INITIAL_STATE,
+      questions: props.questions.slice(0, INITIAL_STATE.questionsSample)
+    })
   );
 
   useEffect(() => {
