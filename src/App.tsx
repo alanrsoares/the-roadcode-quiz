@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { IQuestionItem } from "./types";
 
 import {
-  colors,
-  Shell,
-  ProgressBar,
-  Progress,
-  ProgressText,
   AppContainer,
-  Header,
-  QuestionItem,
-  NextButton,
   ButtonContainer,
-  SummaryCard
+  colors,
+  Header,
+  NextButton,
+  Progress,
+  QuestionItem,
+  Shell,
+  SummaryCard,
 } from "./components";
 
-import { shuffle, ratio } from "./helpers";
+import { ratio, shuffle } from "./helpers";
 import Storage from "./Storage";
 import "./styles.css";
 
@@ -45,7 +43,7 @@ const INITIAL_STATE: State = {
   questions: [],
   questionsSample: 35,
   status: "IN_PROGRESS",
-  selectedOption: null
+  selectedOption: null,
 };
 
 interface Props {
@@ -56,29 +54,29 @@ type SetStateFn = (value: React.SetStateAction<State>) => void;
 
 const makeActionHandlers = (
   setState: SetStateFn,
-  questions: IQuestionItem[]
+  questions: IQuestionItem[],
 ) => ({
   onNextQuestionClick() {
-    setState(state =>
+    setState((state) =>
       state.index < state.questionsSample - 1
         ? {
             ...state,
             index: state.index + 1,
             isAnswered: false,
-            selectedOption: null
+            selectedOption: null,
           }
-        : state
+        : state,
     );
   },
   onResetState() {
-    setState(state => ({
+    setState((state) => ({
       ...INITIAL_STATE,
       questionsSample: state.questionsSample,
-      questions: shuffle(questions).slice(0, state.questionsSample)
+      questions: shuffle(questions).slice(0, state.questionsSample),
     }));
   },
   onOptionSelection(selectedOption: string, isCorrect: boolean) {
-    setState(state => {
+    setState((state) => {
       const isDone = state.index === state.questionsSample - 1;
       const incorrectCount = !isCorrect
         ? state.incorrectCount + 1
@@ -96,16 +94,16 @@ const makeActionHandlers = (
         incorrectCount,
         isDone: isDone || isFailed,
         isAnswered: true,
-        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS"
+        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS",
       };
     });
-  }
+  },
 });
 
 export default function App(props: Props) {
   const defaultState = {
     ...INITIAL_STATE,
-    questions: props.questions.slice(0, INITIAL_STATE.questionsSample)
+    questions: props.questions.slice(0, INITIAL_STATE.questionsSample),
   };
 
   const [state, setState] = useState<State>(Storage.read(defaultState));
@@ -114,40 +112,15 @@ export default function App(props: Props) {
 
   const actions = makeActionHandlers(setState, props.questions);
 
-  const getSampleRatio = ratio(state.questionsSample);
-
-  const progressRatio = getSampleRatio(state.answeredCount);
-  const correctRatio = getSampleRatio(state.correctCount);
-  const incorrectRatio = getSampleRatio(state.incorrectCount);
-
-  const ratios = [
-    {
-      ratio: incorrectRatio,
-      color: colors.negative
-    },
-    {
-      ratio: correctRatio,
-      color: colors.positive
-    }
-  ];
-
   const selectedItem = state.questions[state.index];
 
   return (
     <Shell>
-      <ProgressBar>
-        {ratios.map(({ color, ratio }) => (
-          <Progress key={color} ratio={ratio} color={color} />
-        ))}
-      </ProgressBar>
-      <ProgressText>
-        {state.answeredCount} of {state.questionsSample} (
-        {Math.round(progressRatio)}%)
-        {!!state.incorrectCount &&
-          ` / ${state.incorrectCount} wrong answer${
-            state.incorrectCount > 1 ? "s" : ""
-          }`}
-      </ProgressText>
+      <Progress
+        questionsCount={state.answeredCount}
+        incorrectCount={state.incorrectCount}
+        correctCount={state.correctCount}
+      />
       <AppContainer>
         <Header>The Road Quiz</Header>
         {state.isDone ? (

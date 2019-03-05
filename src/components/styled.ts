@@ -17,14 +17,14 @@ export const colors = {
   asphaltgrey: "#415E6D",
   lightgrey: "#A0AEB6",
   lightgreen: "#75B600",
-  olivegreen: "#46600E"
+  olivegreen: "#46600E",
 };
 
 export const icons = {
   check: `${
     colors.positive
   } 50% no-repeat url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjIwLjM0OXB4IiBoZWlnaHQ9IjE1LjgyNnB4IiB2aWV3Qm94PSIwIDAgMjAuMzQ5IDE1LjgyNiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjAuMzQ5IDE1LjgyNiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxwb2x5Z29uIGZpbGw9IiNmZmZmZmYiIHBvaW50cz0iMTguMjI4LDAgMjAuMzQ5LDIuMTIyIDYuNjQ0LDE1LjgyNiAwLDkuMTgyIDIuMTIyLDcuMDYxIDYuNjQ0LDExLjU4MyAiLz4gPC9zdmc+)`,
-  cross: `white 50% no-repeat  url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE1Ljg3M3B4IiBoZWlnaHQ9IjE1Ljg5MXB4IiB2aWV3Qm94PSIwIDAgMTUuODczIDE1Ljg5MSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTUuODczIDE1Ljg5MSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxwb2x5Z29uIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjZGE0MTIxIiBwb2ludHM9IjE0LjE4NiwwIDE1Ljg3MywxLjc0IDkuNjg2LDcuOTYzIDE1LjgzOCwxNC4xNSAxNC4xNSwxNS44OTEgNy45MjgsOS43MjEgMS44MTEsMTUuODkxIDAuMDM1LDE0LjE1IDYuMTg4LDcuOTYzIDAsMS43NzUgMS43NTgsMCA3Ljk2Myw2LjI0ICIvPiA8L3N2Zz4=)`
+  cross: `white 50% no-repeat  url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE1Ljg3M3B4IiBoZWlnaHQ9IjE1Ljg5MXB4IiB2aWV3Qm94PSIwIDAgMTUuODczIDE1Ljg5MSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTUuODczIDE1Ljg5MSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxwb2x5Z29uIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjZGE0MTIxIiBwb2ludHM9IjE0LjE4NiwwIDE1Ljg3MywxLjc0IDkuNjg2LDcuOTYzIDE1LjgzOCwxNC4xNSAxNC4xNSwxNS44OTEgNy45MjgsOS43MjEgMS44MTEsMTUuODkxIDAuMDM1LDE0LjE1IDYuMTg4LDcuOTYzIDAsMS43NzUgMS43NTgsMCA3Ljk2Myw2LjI0ICIvPiA8L3N2Zz4=)`,
 };
 
 export const Shell = styled.div`
@@ -51,34 +51,6 @@ export const Header = styled.header`
   font-weight: bold;
 `;
 
-export const ProgressBar = styled.div`
-  display: flex;
-  position: fixed;
-  top: 0;
-  background-color: ${colors.neutral};
-  height: 1.8em;
-  width: 100%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-`;
-
-export const Progress = styled.div<{ ratio: number; color: string }>`
-  height: 1.8em;
-  background-color: ${props => props.color};
-  width: ${props => props.ratio}%;
-`;
-
-export const ProgressText = styled.div`
-  font-size: 1em;
-  font-weight: bold;
-  text-align: right;
-  position: fixed;
-  top: 0;
-  right: 0.1em;
-  height: 1.8em;
-  color: white;
-  padding: 0.3em 0.4em;
-`;
-
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
@@ -100,7 +72,7 @@ export const SummaryCard = styled(Card)`
   font-weight: bold;
   color: ${colors.white};
   font-size: 1.2em;
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
 `;
 
 export const Question = styled.div`
@@ -154,12 +126,12 @@ export const Option = styled.div<OptionProps>`
   margin: 0.4em 0;
   align-items: center;
   border-radius: 0.2em;
-  cursor: ${props => (props.isAnswered ? "" : "pointer")};
+  cursor: ${(props) => (props.isAnswered ? "" : "pointer")};
   background-color: ${getOptionBackgroundColor};
-  color: ${props =>
+  color: ${(props) =>
     props.isAnswered && props.isSelected ? colors.white : colors.black};
   :hover {
-    background-color: ${props => (props.isAnswered ? "" : colors.gray)};
+    background-color: ${(props) => (props.isAnswered ? "" : colors.gray)};
   }
 `;
 

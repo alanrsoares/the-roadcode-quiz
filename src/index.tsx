@@ -1,8 +1,8 @@
 import React, { StrictMode } from "react";
 import { render } from "react-dom";
 
-import registerServiceWorker from "./registerServiceWorker";
 import { cache as questions } from "./db.json";
+import registerServiceWorker from "./registerServiceWorker";
 
 import App from "./App";
 
