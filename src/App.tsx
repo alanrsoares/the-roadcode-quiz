@@ -28,7 +28,7 @@ interface State {
   index: number;
   isAnswered: boolean;
   questions: IQuestionItem[];
-  questionsSample: number;
+  questionsAmount: number;
   status: Status;
   selectedOption: string | null;
 }
@@ -41,7 +41,7 @@ const INITIAL_STATE: State = {
   index: 0,
   isAnswered: false,
   questions: [],
-  questionsSample: 35,
+  questionsAmount: 35,
   status: "IN_PROGRESS",
   selectedOption: null,
 };
@@ -58,7 +58,7 @@ const makeActionHandlers = (
 ) => ({
   onNextQuestionClick() {
     setState((state) =>
-      state.index < state.questionsSample - 1
+      state.index < state.questionsAmount - 1
         ? {
             ...state,
             index: state.index + 1,
@@ -71,13 +71,13 @@ const makeActionHandlers = (
   onResetState() {
     setState((state) => ({
       ...INITIAL_STATE,
-      questionsSample: state.questionsSample,
-      questions: shuffle(questions).slice(0, state.questionsSample),
+      questionsAmount: state.questionsAmount,
+      questions: shuffle(questions).slice(0, state.questionsAmount),
     }));
   },
   onOptionSelection(selectedOption: string, isCorrect: boolean) {
     setState((state) => {
-      const isDone = state.index === state.questionsSample - 1;
+      const isDone = state.index === state.questionsAmount - 1;
       const incorrectCount = !isCorrect
         ? state.incorrectCount + 1
         : state.incorrectCount;
@@ -103,7 +103,7 @@ const makeActionHandlers = (
 export default function App(props: Props) {
   const defaultState = {
     ...INITIAL_STATE,
-    questions: props.questions.slice(0, INITIAL_STATE.questionsSample),
+    questions: props.questions.slice(0, INITIAL_STATE.questionsAmount),
   };
 
   const [state, setState] = useState<State>(Storage.read(defaultState));
@@ -117,7 +117,7 @@ export default function App(props: Props) {
   return (
     <Shell>
       <Progress
-        questionsCount={state.answeredCount}
+        questionsCount={state.questionsAmount}
         incorrectCount={state.incorrectCount}
         correctCount={state.correctCount}
       />
