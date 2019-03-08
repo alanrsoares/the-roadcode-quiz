@@ -57,19 +57,18 @@ export default function Progress(props: Props) {
   ];
 
   return (
-    <>
-      <ProgressContainer>
-        {ratios.map((x) => (
-          <ProgressBar key={x.color} ratio={x.ratio} color={x.color} />
-        ))}
-      </ProgressContainer>
+    <ProgressContainer>
+      {ratios.map((x) => (
+        <ProgressBar key={x.color} ratio={x.ratio} color={x.color} />
+      ))}
       <ProgressText>
-        {answeredCount} of {props.questionsCount} ({Math.round(progressRatio)}%)
+        {answeredCount} of {props.questionsCount} ({Math.round(progressRatio)}
+        %)
         {!!props.incorrectCount &&
           ` / ${props.incorrectCount} wrong answer${
             props.incorrectCount > 1 ? "s" : ""
           }`}
       </ProgressText>
-    </>
+    </ProgressContainer>
   );
 }

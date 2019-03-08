@@ -4,14 +4,14 @@ import { IQuestionItem } from "./types";
 
 import {
   AppContainer,
-  ButtonContainer,
+  Footer,
   colors,
   Header,
   NextButton,
   Progress,
   QuestionItem,
   Shell,
-  SummaryCard,
+  SummaryCard
 } from "./components";
 
 import { ratio, shuffle } from "./helpers";
@@ -43,7 +43,7 @@ const INITIAL_STATE: State = {
   questions: [],
   questionsAmount: 35,
   status: "IN_PROGRESS",
-  selectedOption: null,
+  selectedOption: null
 };
 
 interface Props {
@@ -54,29 +54,29 @@ type SetStateFn = (value: React.SetStateAction<State>) => void;
 
 const makeActionHandlers = (
   setState: SetStateFn,
-  questions: IQuestionItem[],
+  questions: IQuestionItem[]
 ) => ({
   onNextQuestionClick() {
-    setState((state) =>
+    setState(state =>
       state.index < state.questionsAmount - 1
         ? {
             ...state,
             index: state.index + 1,
             isAnswered: false,
-            selectedOption: null,
+            selectedOption: null
           }
-        : state,
+        : state
     );
   },
   onResetState() {
-    setState((state) => ({
+    setState(state => ({
       ...INITIAL_STATE,
       questionsAmount: state.questionsAmount,
-      questions: shuffle(questions).slice(0, state.questionsAmount),
+      questions: shuffle(questions).slice(0, state.questionsAmount)
     }));
   },
   onOptionSelection(selectedOption: string, isCorrect: boolean) {
-    setState((state) => {
+    setState(state => {
       const isDone = state.index === state.questionsAmount - 1;
       const incorrectCount = !isCorrect
         ? state.incorrectCount + 1
@@ -94,16 +94,16 @@ const makeActionHandlers = (
         incorrectCount,
         isDone: isDone || isFailed,
         isAnswered: true,
-        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS",
+        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS"
       };
     });
-  },
+  }
 });
 
 export default function App(props: Props) {
   const defaultState = {
     ...INITIAL_STATE,
-    questions: props.questions.slice(0, INITIAL_STATE.questionsAmount),
+    questions: props.questions.slice(0, INITIAL_STATE.questionsAmount)
   };
 
   const [state, setState] = useState<State>(Storage.read(defaultState));
@@ -123,28 +123,30 @@ export default function App(props: Props) {
       />
       <AppContainer>
         <Header>The Road Quiz</Header>
-        {state.isDone ? (
-          <SummaryCard
-            color={
-              state.status === "FAILED" ? colors.negative : colors.positive
-            }
-          >
-            {state.status === "FAILED"
-              ? `Sorry, you failed ${
-                  state.incorrectCount
-                } questions. Try again.`
-              : "Congratulations, you passed the test!"}
-          </SummaryCard>
-        ) : (
-          <QuestionItem
-            key={selectedItem.key}
-            onSelect={actions.onOptionSelection}
-            index={state.index + 1}
-            selected={state.selectedOption}
-            {...selectedItem.value}
-          />
-        )}
-        <ButtonContainer>
+        <main>
+          {state.isDone ? (
+            <SummaryCard
+              color={
+                state.status === "FAILED" ? colors.negative : colors.positive
+              }
+            >
+              {state.status === "FAILED"
+                ? `Sorry, you failed ${
+                    state.incorrectCount
+                  } questions. Try again.`
+                : "Congratulations, you passed the test!"}
+            </SummaryCard>
+          ) : (
+            <QuestionItem
+              key={selectedItem.key}
+              onSelect={actions.onOptionSelection}
+              index={state.index + 1}
+              selected={state.selectedOption}
+              {...selectedItem.value}
+            />
+          )}
+        </main>
+        <Footer>
           {!!state.isAnswered &&
             (state.isDone ? (
               <NextButton onClick={actions.onResetState}>Play again</NextButton>
@@ -153,7 +155,7 @@ export default function App(props: Props) {
                 Next question
               </NextButton>
             ))}
-        </ButtonContainer>
+        </Footer>
       </AppContainer>
     </Shell>
   );

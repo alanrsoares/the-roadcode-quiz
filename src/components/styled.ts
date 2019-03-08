@@ -177,7 +177,7 @@ export const Pill = styled.span<PillProps>`
   border: ${getPillBorder};
 `;
 
-export const ButtonContainer = styled.div`
+export const Footer = styled.footer`
   display: flex;
   justify-self: flex-end;
   align-self: flex-end;
