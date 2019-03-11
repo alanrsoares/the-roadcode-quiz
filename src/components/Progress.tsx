@@ -12,11 +12,16 @@ const ProgressContainer = styled.div`
   width: 100%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 `;
+export interface ProgressBarProps {
+  ratio: number;
+  color: string;
+}
 
-const ProgressBar = styled.div<{ ratio: number; color: string }>`
+const ProgressBar = styled.div<ProgressBarProps>`
   height: 1.8em;
   background-color: ${(props) => props.color};
   width: ${(props) => props.ratio}%;
+  transition: 0.3s;
 `;
 
 const ProgressText = styled.div`

@@ -78,13 +78,14 @@ export const SummaryCard = styled(Card)`
 `;
 
 export const Question = styled.div`
-  font-size: 16px;
+  font-size: 1.2em;
   font-weight: bold;
   background: ${colors.primary};
   padding: 0.3em;
   border-radius: 0.2em;
   display: flex;
   justify-content: space-between;
+  color: #333;
 `;
 
 export const QuestionText = styled.div`
@@ -135,6 +136,7 @@ export const Option = styled.div<OptionProps>`
   :hover {
     background-color: ${(props) => (props.isAnswered ? "" : colors.gray)};
   }
+  transition: background-color 0.3s;
 `;
 
 export const Hint = styled.div`
