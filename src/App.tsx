@@ -11,7 +11,7 @@ import {
   Progress,
   QuestionItem,
   Shell,
-  SummaryCard,
+  SummaryCard
 } from "./components";
 
 import { ratio, shuffle } from "./helpers";
@@ -43,7 +43,7 @@ const INITIAL_STATE: State = {
   questions: [],
   questionsAmount: 35,
   status: "IN_PROGRESS",
-  selectedOption: null,
+  selectedOption: null
 };
 
 interface Props {
@@ -54,7 +54,7 @@ type SetStateFn = (value: React.SetStateAction<State>) => void;
 
 const makeActionHandlers = (
   setState: SetStateFn,
-  questions: IQuestionItem[],
+  questions: IQuestionItem[]
 ) => ({
   onNextQuestionClick() {
     setState((state) =>
@@ -63,16 +63,16 @@ const makeActionHandlers = (
             ...state,
             index: state.index + 1,
             isAnswered: false,
-            selectedOption: null,
+            selectedOption: null
           }
-        : state,
+        : state
     );
   },
   onResetState() {
     setState((state) => ({
       ...INITIAL_STATE,
       questionsAmount: state.questionsAmount,
-      questions: shuffle(questions).slice(0, state.questionsAmount),
+      questions: shuffle(questions).slice(0, state.questionsAmount)
     }));
   },
   onOptionSelection(selectedOption: string, isCorrect: boolean) {
@@ -94,21 +94,25 @@ const makeActionHandlers = (
         incorrectCount,
         isDone: isDone || isFailed,
         isAnswered: true,
-        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS",
+        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS"
       };
     });
-  },
+  }
 });
 
 export default function App(props: Props) {
   const defaultState = {
     ...INITIAL_STATE,
-    questions: props.questions.slice(0, INITIAL_STATE.questionsAmount),
+    questions: props.questions.slice(0, INITIAL_STATE.questionsAmount)
   };
 
   const [state, setState] = useState<State>(Storage.read(defaultState));
 
   useEffect(() => Storage.persist(state));
+  useEffect(() => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  });
 
   const actions = makeActionHandlers(setState, props.questions);
 
