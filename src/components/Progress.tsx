@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
+
 import { ratio } from "../helpers";
 import { colors } from "./styled";
 

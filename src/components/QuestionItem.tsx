@@ -1,15 +1,15 @@
-import React, { useState, StrictMode } from "react";
+import React from "react";
 
 import {
-  colors,
   Card,
-  Question,
-  QuestionText,
-  ImageWrapper,
-  Pill,
+  colors,
+  Hint,
   Image,
+  ImageWrapper,
   Option,
-  Hint
+  Pill,
+  Question,
+  QuestionText
 } from "./styled";
 
 import { IQuestion } from "../types";
@@ -22,7 +22,9 @@ interface Props extends IQuestion {
 
 export default function QuestionItem(props: Props) {
   const handleSelection = (option: string) => () => {
-    if (!!props.selected) return;
+    if (!!props.selected) {
+      return;
+    }
 
     props.onSelect(option, option === props.correctAnswer);
   };
@@ -37,7 +39,7 @@ export default function QuestionItem(props: Props) {
           <Image alt="question's image" src={props.image.uri} />
         </ImageWrapper>
       </Question>
-      {Object.keys(props.answers).map(key => (
+      {Object.keys(props.answers).map((key) => (
         <Option
           key={key}
           onClick={handleSelection(key)}
