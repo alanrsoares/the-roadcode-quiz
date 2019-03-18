@@ -12,3 +12,11 @@ export interface IQuestionItem {
   key: string;
   value: IQuestion;
 }
+
+export interface HistoryEntry {
+  correct: number;
+  incorrect: number;
+  total: number;
+}
+
+export type History = HistoryEntry[];

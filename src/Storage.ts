@@ -1,12 +1,16 @@
 const LS_KEY = "@THE_ROAD_QUIZ";
 
-export default class Storage {
-  static persist<T extends {}>(value: T) {
-    localStorage.setItem(LS_KEY, JSON.stringify(value));
-  }
+export default {
+  persist<T extends {}>(value: T, path: string = "") {
+    const key = `${LS_KEY}${path}`;
 
-  static read<T extends {}>(defaultValue: T): T {
-    const value = localStorage.getItem(LS_KEY);
+    localStorage.setItem(key, JSON.stringify(value));
+  },
+
+  read<T>(defaultValue: T, path: string = ""): T {
+    const key = `${LS_KEY}${path}`;
+    const value = localStorage.getItem(key);
+
     return value !== null ? JSON.parse(value) : defaultValue;
   }
-}
+};

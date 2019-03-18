@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 
 export const colors = {
-  primary: "#ffd400",
-  secondary: "#3482b9",
-  positive: "#49c04a",
-  negative: "#d03930",
-  neutral: "#aaa",
-  muted: "#eaeaea",
+  primary: "#FFD400",
+  secondary: "#3482B9",
+  positive: "#49C04A",
+  negative: "#D03930",
+  neutral: "#AAA",
+  muted: "#EAEAEA",
   hotpink: "#FC8BA4",
   black: "#333",
-  white: "#fff",
-  gray: "#ccc",
+  white: "#FFF",
+  gray: "#CCC",
   // alternative pallette
   lightbrown: "#AD5114",
   darkbrown: "#663210",
