@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { History, IQuestionItem } from "./types";
+import { IQuestionItem } from "./types";
 
 import {
   AppContainer,
@@ -13,7 +13,6 @@ import {
   Shell,
   SummaryCard
 } from "./components";
-import ProgressHistory from "./components/ProgressHistory";
 
 import { shuffle } from "./helpers";
 import Storage from "./Storage";
@@ -70,21 +69,11 @@ const makeActionHandlers = (
     );
   },
   onResetState() {
-    setState(state => {
-      const entry = {
-        correct: state.correctCount,
-        incorrect: state.incorrectCount,
-        total: state.questionsAmount
-      };
-      const history: History = Storage.read([], "/history");
-      Storage.persist<History>([...history.slice(0, 4), entry], "/history");
-
-      return {
-        ...INITIAL_STATE,
-        questionsAmount: state.questionsAmount,
-        questions: shuffle(questions).slice(0, state.questionsAmount)
-      };
-    });
+    setState(state => ({
+      ...INITIAL_STATE,
+      questionsAmount: state.questionsAmount,
+      questions: shuffle(questions).slice(0, state.questionsAmount)
+    }));
   },
   onOptionSelection(selectedOption: string, isCorrect: boolean) {
     setState(state => {
@@ -111,15 +100,6 @@ const makeActionHandlers = (
   }
 });
 
-const useHandlers = (setState: SetStateFn, props: Props) => {
-  const make = useCallback(
-    () => makeActionHandlers(setState, props.questions),
-    []
-  );
-
-  return make();
-};
-
 export default function App(props: Props) {
   const defaultState = {
     ...INITIAL_STATE,
@@ -128,11 +108,9 @@ export default function App(props: Props) {
 
   const [state, setState] = useState<State>(Storage.read(defaultState));
 
-  useEffect(() => {
-    Storage.persist(state);
-  });
+  useEffect(() => Storage.persist(state));
 
-  const actions = useHandlers(setState, props);
+  const actions = makeActionHandlers(setState, props.questions);
 
   const selectedItem = state.questions[state.index];
 
@@ -147,22 +125,17 @@ export default function App(props: Props) {
         <Header>The Road Quiz</Header>
         <main>
           {state.isDone ? (
-            <>
-              <SummaryCard
-                color={
-                  state.status === "FAILED" ? colors.negative : colors.positive
-                }
-              >
-                {state.status === "FAILED"
-                  ? `Sorry, you failed ${
-                      state.incorrectCount
-                    } questions. Try again.`
-                  : "Congratulations, you passed the test!"}
-              </SummaryCard>
-              <ProgressHistory
-                history={Storage.read<History>([], "/history")}
-              />
-            </>
+            <SummaryCard
+              color={
+                state.status === "FAILED" ? colors.negative : colors.positive
+              }
+            >
+              {state.status === "FAILED"
+                ? `Sorry, you failed ${
+                    state.incorrectCount
+                  } questions. Try again.`
+                : "Congratulations, you passed the test!"}
+            </SummaryCard>
           ) : (
             <QuestionItem
               key={selectedItem.key}

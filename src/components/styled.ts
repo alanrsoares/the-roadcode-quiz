@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 
 export const colors = {
-  primary: "#FFD400",
-  secondary: "#3482B9",
-  positive: "#49C04A",
-  negative: "#D03930",
-  neutral: "#AAA",
-  muted: "#EAEAEA",
+  primary: "#ffd400",
+  secondary: "#3482b9",
+  positive: "#49c04a",
+  negative: "#d03930",
+  neutral: "#aaa",
+  muted: "#eaeaea",
   hotpink: "#FC8BA4",
   black: "#333",
-  white: "#FFF",
-  gray: "#CCC",
+  white: "#fff",
+  gray: "#ccc",
   // alternative pallette
   lightbrown: "#AD5114",
   darkbrown: "#663210",
@@ -34,8 +34,7 @@ export const Shell = styled.div`
   background-color: #dedede;
   font-family: Roboto, sans-serif;
   color: ${colors.black};
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
 `;
 
 export const AppContainer = styled.div`
@@ -75,7 +74,7 @@ export const SummaryCard = styled(Card)`
   font-weight: bold;
   color: ${colors.white};
   font-size: 1.2em;
-  background-color: ${(props) => props.color};
+  background-color: ${props => props.color};
 `;
 
 export const Question = styled.div`
@@ -87,6 +86,7 @@ export const Question = styled.div`
   display: flex;
   justify-content: space-between;
   color: #333;
+  margin-bottom: 0.2em;
 `;
 
 export const QuestionText = styled.div`
@@ -127,15 +127,15 @@ const getOptionBackgroundColor = (props: OptionProps) =>
 export const Option = styled.div<OptionProps>`
   display: ${getOptionDisplay};
   padding: 0.6em 0.2em;
-  margin: 0.4em 0;
+  margin: 0.2em 0;
   align-items: center;
   border-radius: 0.2em;
-  cursor: ${(props) => (props.isAnswered ? "" : "pointer")};
+  cursor: ${props => (props.isAnswered ? "" : "pointer")};
   background-color: ${getOptionBackgroundColor};
-  color: ${(props) =>
+  color: ${props =>
     props.isAnswered && props.isSelected ? colors.white : colors.black};
   :hover {
-    background-color: ${(props) => (props.isAnswered ? "" : colors.gray)};
+    background-color: ${props => (props.isAnswered ? "" : colors.gray)};
   }
   transition: background-color 0.3s;
 `;

@@ -29,6 +29,11 @@ export default function QuestionItem(props: Props) {
     props.onSelect(option, option === props.correctAnswer);
   };
 
+  const pillContent = (key: string) =>
+    !!props.selected && (key === props.selected || key === props.correctAnswer)
+      ? ""
+      : key;
+
   return (
     <Card>
       <Question>
@@ -39,7 +44,7 @@ export default function QuestionItem(props: Props) {
           <Image alt="question's image" src={props.image.uri} />
         </ImageWrapper>
       </Question>
-      {Object.keys(props.answers).map((key) => (
+      {Object.keys(props.answers).map((key: string) => (
         <Option
           key={key}
           onClick={handleSelection(key)}
@@ -52,10 +57,7 @@ export default function QuestionItem(props: Props) {
             isCorrect={key === props.correctAnswer}
             isSelected={key === props.selected}
           >
-            {!!props.selected &&
-            (key === props.selected || key === props.correctAnswer)
-              ? ""
-              : key}
+            {pillContent(key)}
           </Pill>
           <div>{props.answers[key]}</div>
         </Option>
