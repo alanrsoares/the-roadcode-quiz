@@ -57,7 +57,7 @@ const makeActionHandlers = (
   questions: IQuestionItem[]
 ) => ({
   onNextQuestionClick() {
-    setState(state =>
+    setState((state: State) =>
       state.index < state.questionsAmount - 1
         ? {
             ...state,
@@ -69,14 +69,14 @@ const makeActionHandlers = (
     );
   },
   onResetState() {
-    setState(state => ({
+    setState((state: State) => ({
       ...INITIAL_STATE,
       questionsAmount: state.questionsAmount,
       questions: shuffle(questions).slice(0, state.questionsAmount)
     }));
   },
   onOptionSelection(selectedOption: string, isCorrect: boolean) {
-    setState(state => {
+    setState((state: State) => {
       const isDone = state.index === state.questionsAmount - 1;
       const incorrectCount = !isCorrect
         ? state.incorrectCount + 1
