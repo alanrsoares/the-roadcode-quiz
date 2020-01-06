@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 import { ratio } from "../helpers";
 import { History } from "../types";

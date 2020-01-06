@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import React from "react";
+import styled from "styled-components";
 
 import { ratio } from "../helpers";
 import { colors } from "./styled";
@@ -20,8 +20,8 @@ export interface ProgressBarProps {
 
 const ProgressBar = styled.div<ProgressBarProps>`
   height: 1.8em;
-  background-color: ${(props) => props.color};
-  width: ${(props) => props.ratio}%;
+  background-color: ${props => props.color};
+  width: ${props => props.ratio}%;
   transition: 0.3s;
 `;
 
@@ -54,17 +54,17 @@ export default function Progress(props: Props) {
   const ratios = [
     {
       ratio: incorrectRatio,
-      color: colors.negative,
+      color: colors.negative
     },
     {
       ratio: correctRatio,
-      color: colors.positive,
-    },
+      color: colors.positive
+    }
   ];
 
   return (
     <ProgressContainer>
-      {ratios.map((x) => (
+      {ratios.map(x => (
         <ProgressBar key={x.color} ratio={x.ratio} color={x.color} />
       ))}
       <ProgressText>
