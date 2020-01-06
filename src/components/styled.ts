@@ -94,12 +94,13 @@ export const QuestionText = styled.div`
   margin-right: 0.1em;
 `;
 
-export const Image = styled.img`
+export const Image = styled.img<{ round?: boolean }>`
   width: 8em;
   height: 8em;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: ${props => (props.round ? "50%" : "0.1em")};
   border: solid 0.2em white;
+  transition: border-radius 0.2s linear;
 `;
 
 export const ImageWrapper = styled.div``;

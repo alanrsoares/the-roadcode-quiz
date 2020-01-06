@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
 import {
   Card,
@@ -21,13 +21,22 @@ interface Props extends IQuestion {
 }
 
 export default function QuestionItem(props: Props) {
-  const handleSelection = (option: string) => () => {
-    if (!!props.selected) {
-      return;
-    }
+  const [showRoundImage, setShowRoundImage] = useState(true);
 
-    props.onSelect(option, option === props.correctAnswer);
-  };
+  const handleToggleRoundImage = useCallback(
+    () => setShowRoundImage(prev => !prev),
+    []
+  );
+  const handleSelection = useCallback(
+    (option: string) => () => {
+      if (!!props.selected) {
+        return;
+      }
+
+      props.onSelect(option, option === props.correctAnswer);
+    },
+    []
+  );
 
   const pillContent = (key: string) =>
     !!props.selected && (key === props.selected || key === props.correctAnswer)
@@ -40,8 +49,12 @@ export default function QuestionItem(props: Props) {
         <QuestionText>
           #{props.index}: {props.question}
         </QuestionText>
-        <ImageWrapper>
-          <Image alt="question's image" src={props.image.uri} />
+        <ImageWrapper onClick={handleToggleRoundImage}>
+          <Image
+            round={showRoundImage}
+            alt="question's image"
+            src={props.image.uri}
+          />
         </ImageWrapper>
       </Question>
       {Object.keys(props.answers).map((key: string) => (
@@ -69,9 +82,8 @@ export default function QuestionItem(props: Props) {
               Correct Answer: {props.correctAnswer}
             </p>
           )}
-          {`For more information about this question refer to page ${
-            props.roadCodePage
-          } of the Official New Zealand Road Code.`}
+          {// tslint:disable-next-line: max-line-length
+          `For more information about this question refer to page ${props.roadCodePage} of the Official New Zealand Road Code.`}
         </Hint>
       )}
     </Card>

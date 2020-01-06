@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import { IQuestionItem } from "./types";
 
@@ -50,10 +50,8 @@ interface Props {
   questions: IQuestionItem[];
 }
 
-type SetStateFn = (value: React.SetStateAction<State>) => void;
-
 const makeActionHandlers = (
-  setState: SetStateFn,
+  setState: Dispatch<SetStateAction<State>>,
   questions: IQuestionItem[]
 ) => ({
   onNextQuestionClick() {
@@ -131,9 +129,7 @@ export default function App(props: Props) {
               }
             >
               {state.status === "FAILED"
-                ? `Sorry, you failed ${
-                    state.incorrectCount
-                  } questions. Try again.`
+                ? `Sorry, you failed ${state.incorrectCount} questions. Try again.`
                 : "Congratulations, you passed the test!"}
             </SummaryCard>
           ) : (
