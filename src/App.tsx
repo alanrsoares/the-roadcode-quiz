@@ -128,9 +128,15 @@ export default function App(props: Props) {
                 state.status === "FAILED" ? colors.negative : colors.positive
               }
             >
-              {state.status === "FAILED"
-                ? `Sorry, you failed ${state.incorrectCount} questions. Try again.`
-                : "Congratulations, you passed the test!"}
+              {state.status === "FAILED" ? (
+                <>
+                  {`Oh stink! You failed ${state.incorrectCount} questions`}.
+                  <br />
+                  Don't give up just yet, try again.
+                </>
+              ) : (
+                <>Awesome, you passed the test!</>
+              )}
             </SummaryCard>
           ) : (
             <QuestionItem

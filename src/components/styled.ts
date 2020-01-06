@@ -20,6 +20,10 @@ export const colors = {
   olivegreen: "#46600E"
 };
 
+export const theme = {
+  colors
+};
+
 export const icons = {
   check: `${
     colors.positive
@@ -58,12 +62,12 @@ export const Card = styled.div`
   flex-direction: column;
   min-height: 10vh;
   margin: 1em 0;
-  padding: 0.3em;
-  border-radius: 0.2em;
+  padding: 0.4em;
+  border-radius: 0.3em;
   background-color: white;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   @media screen and (max-width: 600px) {
-    margin: 1em 0.4em;
+    margin: 1em 0.8em;
   }
 `;
 
@@ -74,7 +78,9 @@ export const SummaryCard = styled(Card)`
   font-weight: bold;
   color: ${colors.white};
   font-size: 1.2em;
+  line-height: 1.6em;
   background-color: ${props => props.color};
+  text-align: center;
 `;
 
 export const Question = styled.div`
@@ -98,7 +104,7 @@ export const Image = styled.img<{ round?: boolean }>`
   width: 8em;
   height: 8em;
   overflow: hidden;
-  border-radius: ${props => (props.round ? "50%" : "0.1em")};
+  border-radius: ${props => (props.round ? "50%" : "0.2em")};
   border: solid 0.2em white;
   transition: border-radius 0.2s linear;
 `;
@@ -127,7 +133,7 @@ const getOptionBackgroundColor = (props: OptionProps) =>
 
 export const Option = styled.div<OptionProps>`
   display: ${getOptionDisplay};
-  padding: 0.6em 0.2em;
+  padding: 0.6em 0.4em;
   margin: 0.2em 0;
   align-items: center;
   border-radius: 0.2em;
@@ -135,10 +141,13 @@ export const Option = styled.div<OptionProps>`
   background-color: ${getOptionBackgroundColor};
   color: ${props =>
     props.isAnswered && props.isSelected ? colors.white : colors.black};
+  transition: background-color 0.3s;
   :hover {
     background-color: ${props => (props.isAnswered ? "" : colors.gray)};
   }
-  transition: background-color 0.3s;
+  :last-of-type {
+    margin-bottom: 0;
+  }
 `;
 
 export const Hint = styled.div`
@@ -196,11 +205,13 @@ export const NextButton = styled.button`
   font-size: 1.8em;
   color: white;
   border: none;
-  border-radius: 0.1em;
+  border-radius: 0.2em;
   padding: 0.3em 0.6em;
   flex: 1;
   @media screen and (max-width: 600px) {
     align-self: flex-end;
+    position: fixed;
+    width: 100%;
     border-radius: 0;
   }
 `;

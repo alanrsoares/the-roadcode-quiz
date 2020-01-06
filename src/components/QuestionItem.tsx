@@ -44,6 +44,8 @@ export default function QuestionItem(props: Props) {
       ? ""
       : key;
 
+  const answerKeys = Object.keys(props.answers);
+
   return (
     <Card>
       <Question>
@@ -58,7 +60,7 @@ export default function QuestionItem(props: Props) {
           />
         </ImageWrapper>
       </Question>
-      {Object.keys(props.answers).map((key: string) => (
+      {answerKeys.map((key: string, index: number) => (
         <Option
           key={key}
           onClick={handleSelection(key)}
