@@ -27,6 +27,7 @@ export default function QuestionItem(props: Props) {
     () => setShowRoundImage(prev => !prev),
     []
   );
+
   const handleSelection = useCallback(
     (option: string) => () => {
       if (!!props.selected) {
@@ -35,7 +36,7 @@ export default function QuestionItem(props: Props) {
 
       props.onSelect(option, option === props.correctAnswer);
     },
-    []
+    [props]
   );
 
   const pillContent = (key: string) =>

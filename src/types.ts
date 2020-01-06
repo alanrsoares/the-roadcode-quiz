@@ -4,7 +4,7 @@ export interface IQuestion {
   image: {
     uri: string;
   };
-  answers: { [key: string]: string };
+  answers: Record<string, string>;
   roadCodePage: string;
 }
 
