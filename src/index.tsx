@@ -1,16 +1,20 @@
 import React, { StrictMode } from "react";
 import { render } from "react-dom";
+import { ThemeProvider } from "styled-components";
 
 import { cache as questions } from "./db.json";
 import registerServiceWorker from "./registerServiceWorker";
 
 import App from "./App";
+import { theme } from "./components/styled";
 
 const rootElement = document.getElementById("root");
 
 const app = (
   <StrictMode>
-    <App questions={questions} />
+    <ThemeProvider theme={theme}>
+      <App questions={questions} />
+    </ThemeProvider>
   </StrictMode>
 );
 

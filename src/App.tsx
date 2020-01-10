@@ -4,7 +4,6 @@ import { IQuestionItem } from "./types";
 
 import {
   AppContainer,
-  colors,
   Footer,
   Header,
   NextButton,
@@ -124,9 +123,7 @@ export default function App(props: Props) {
         <main>
           {state.isDone ? (
             <SummaryCard
-              color={
-                state.status === "FAILED" ? colors.negative : colors.positive
-              }
+              color={state.status === "FAILED" ? "negative" : "positive"}
             >
               {state.status === "FAILED" ? (
                 <>

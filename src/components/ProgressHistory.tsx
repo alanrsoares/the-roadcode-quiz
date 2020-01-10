@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { ratio } from "../helpers";
 import { History } from "../types";
-import { colors } from "./styled";
+import { Color, getColor } from "./styled";
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -22,13 +22,13 @@ const BarWrapper = styled.div`
   background-color: #fff;
   width: 3em;
   display: flex;
-  border-right: solid 1px ${colors.gray};
+  border-right: solid 1px ${getColor("gray")};
   justify-content: center;
 `;
 
-const Bar = styled.div<{ value: number; total: number; color: string }>`
-  background-color: ${props => props.color};
-  color: ${colors.white};
+const Bar = styled.div<{ value: number; total: number; color: Color }>`
+  background-color: ${props => props.theme.colors[props.color]};
+  color: ${getColor("white")};
   align-self: flex-end;
   height: calc(${props => ratio(props.total)(props.value)}%);
   width: calc(50%);
@@ -50,20 +50,12 @@ export default function ProgressHistory(props: Props) {
       {props.history.map((entry, i) => (
         <BarWrapper key={`entry-${i}`}>
           {!!entry.correct && (
-            <Bar
-              color={colors.positive}
-              value={entry.correct}
-              total={entry.total}
-            >
+            <Bar color={"positive"} value={entry.correct} total={entry.total}>
               {entry.correct}
             </Bar>
           )}
           {!!entry.incorrect && (
-            <Bar
-              color={colors.negative}
-              value={entry.incorrect}
-              total={entry.total}
-            >
+            <Bar color={"negative"} value={entry.incorrect} total={entry.total}>
               {entry.incorrect}
             </Bar>
           )}

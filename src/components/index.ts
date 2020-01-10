@@ -1,4 +1,4 @@
-export * from "./styled";
+export * from "./core";
 
 export { default as QuestionItem } from "./QuestionItem";
 

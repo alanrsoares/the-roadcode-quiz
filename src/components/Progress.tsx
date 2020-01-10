@@ -1,14 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+
+import styled, { getColor, useTheme } from "./styled";
 
 import { ratio } from "../helpers";
-import { colors } from "./styled";
 
 const ProgressContainer = styled.div`
   display: flex;
   position: fixed;
   top: 0;
-  background-color: ${colors.neutral};
+  background-color: ${getColor("neutral")};
   height: 1.8em;
   width: 100%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
@@ -43,13 +43,15 @@ interface Props {
   incorrectCount: number;
 }
 
-export default function Progress(props: Props) {
+const Progress: React.FC<Props> = (props: Props) => {
   const answeredCount = props.incorrectCount + props.correctCount;
 
   const getSampleRatio = ratio(props.questionsCount);
   const progressRatio = getSampleRatio(answeredCount);
   const incorrectRatio = getSampleRatio(props.incorrectCount);
   const correctRatio = getSampleRatio(props.correctCount);
+
+  const { colors } = useTheme();
 
   const ratios = [
     {
@@ -77,4 +79,6 @@ export default function Progress(props: Props) {
       </ProgressText>
     </ProgressContainer>
   );
-}
+};
+
+export default Progress;

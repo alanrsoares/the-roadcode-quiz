@@ -2,15 +2,15 @@ import React, { useCallback, useState } from "react";
 
 import {
   Card,
-  colors,
   Hint,
+  HintHighlight,
   Image,
   ImageWrapper,
   Option,
   Pill,
   Question,
   QuestionText
-} from "./styled";
+} from "./core";
 
 import { IQuestion } from "../types";
 
@@ -81,9 +81,7 @@ export default function QuestionItem(props: Props) {
       {!!props.selected && (
         <Hint>
           {props.selected !== props.correctAnswer && (
-            <p style={{ color: colors.negative }}>
-              Correct Answer: {props.correctAnswer}
-            </p>
+            <HintHighlight>Correct Answer: {props.correctAnswer}</HintHighlight>
           )}
           {// tslint:disable-next-line: max-line-length
           `For more information about this question refer to page ${props.roadCodePage} of the Official New Zealand Road Code.`}
