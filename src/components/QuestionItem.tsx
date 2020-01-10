@@ -45,7 +45,7 @@ export default function QuestionItem(props: Props) {
       (key === props.selected || key === props.correctAnswer)
         ? ""
         : key,
-    []
+    [props.selected, props.correctAnswer]
   );
 
   const answerKeys = Object.keys(props.answers);
