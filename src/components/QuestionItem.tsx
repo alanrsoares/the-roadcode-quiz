@@ -60,7 +60,7 @@ export default function QuestionItem(props: Props) {
           />
         </ImageWrapper>
       </Question>
-      {answerKeys.map((key: string, index: number) => (
+      {answerKeys.map((key: string) => (
         <Option
           key={key}
           onClick={handleSelection(key)}

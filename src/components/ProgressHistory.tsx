@@ -26,7 +26,13 @@ const BarWrapper = styled.div`
   justify-content: center;
 `;
 
-const Bar = styled.div<{ value: number; total: number; color: Color }>`
+interface BarProps {
+  value: number;
+  total: number;
+  color: Color;
+}
+
+const Bar = styled.div<BarProps>`
   background-color: ${props => props.theme.colors[props.color]};
   color: ${getColor("white")};
   align-self: flex-end;
