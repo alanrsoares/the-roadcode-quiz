@@ -109,14 +109,13 @@ const getOptionDisplay = (props: OptionProps) =>
       : "none"
     : "flex";
 
-const getOptionBackgroundColor = (props: ThemedProps<OptionProps>) =>
-  getColor(
-    props.isAnswered && props.isSelected
-      ? props.isCorrect
-        ? "positive"
-        : "negative"
-      : "muted"
-  )(props);
+const getOptionBackgroundColor = getColor<ThemedProps<OptionProps>>(props =>
+  props.isAnswered && props.isSelected
+    ? props.isCorrect
+      ? "positive"
+      : "negative"
+    : "muted"
+);
 
 export const Option = styled.div<OptionProps>`
   display: ${getOptionDisplay};

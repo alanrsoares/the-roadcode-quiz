@@ -39,10 +39,14 @@ export default function QuestionItem(props: Props) {
     [props]
   );
 
-  const pillContent = (key: string) =>
-    !!props.selected && (key === props.selected || key === props.correctAnswer)
-      ? ""
-      : key;
+  const pillContent = useCallback(
+    (key: string) =>
+      !!props.selected &&
+      (key === props.selected || key === props.correctAnswer)
+        ? ""
+        : key,
+    []
+  );
 
   const answerKeys = Object.keys(props.answers);
 
@@ -83,8 +87,7 @@ export default function QuestionItem(props: Props) {
           {props.selected !== props.correctAnswer && (
             <HintHighlight>Correct Answer: {props.correctAnswer}</HintHighlight>
           )}
-          {// tslint:disable-next-line: max-line-length
-          `For more information about this question refer to page ${props.roadCodePage} of the Official New Zealand Road Code.`}
+          {`For more information about this question refer to page ${props.roadCodePage} of the Official New Zealand Road Code.`}
         </Hint>
       )}
     </Card>
