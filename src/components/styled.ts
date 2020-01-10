@@ -65,8 +65,8 @@ export function useTheme() {
 export const getThemeProp = <P extends keyof Theme>(key: P) => <
   TProps extends ThemeProps = ThemeProps
 >(
-  val: keyof Theme[P]
-) => (props: TProps) => props.theme[key][val];
+  value: keyof Theme[P]
+) => (props: TProps) => props.theme[key][value];
 
 export const getColor = getThemeProp("colors");
 export const getRadius = getThemeProp("radii");
