@@ -15,13 +15,20 @@ export const colors = {
   hotpink: "#FC8BA4",
   black: "#333",
   white: "#FFF",
-  gray: "#CCC"
+  gray: "#CCC",
+  shadow: "rgba(0, 0, 0, 0.4)"
 };
 
-const baseRadius = 4;
-
 export const radii = {
-  default: baseRadius
+  default: "0.2em",
+  sm: "0.1em",
+  md: "0.2em",
+  lg: "0.3em",
+  round: "50%"
+};
+
+export const shadows = {
+  default: `0 2px 6px ${colors.shadow}`
 };
 
 const baseFontSize = 18;
@@ -35,7 +42,8 @@ export const fontSizes = {
 export const theme = {
   colors,
   radii,
-  fontSizes
+  fontSizes,
+  shadows
 };
 
 export type Color = keyof typeof colors;
@@ -61,9 +69,8 @@ export const getThemeProp = <P extends keyof Theme>(key: P) => <
 ) => (props: TProps) => props.theme[key][val];
 
 export const getColor = getThemeProp("colors");
-
 export const getRadius = getThemeProp("radii");
-
 export const getFontSize = getThemeProp("fontSizes");
+export const getShadow = getThemeProp("shadows");
 
 export default baseStyled as ThemedStyledInterface<Theme>;

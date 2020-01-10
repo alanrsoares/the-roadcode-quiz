@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { ratio } from "../helpers";
 import { History } from "../types";
-import { Color, getColor } from "./styled";
+import { Color, getColor, getRadius, getShadow } from "./styled";
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -12,8 +12,8 @@ const Wrapper = styled.div`
   height: 12em;
   justify-content: space-around;
   margin-bottom: 1em;
-  border-radius: 0.2em;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border-radius: ${getRadius("md")};
+  box-shadow: ${getShadow("default")};
   overflow: hidden;
 `;
 
@@ -38,12 +38,12 @@ const Bar = styled.div<BarProps>`
   align-self: flex-end;
   height: calc(${props => ratio(props.total)(props.value)}%);
   width: calc(50%);
-  border-top-right-radius: 0.2em;
-  border-top-left-radius: 0.2em;
+  border-top-right-radius: ${getRadius("md")};
+  border-top-left-radius: ${getRadius("md")};
   margin: 0.1em;
   text-align: center;
   padding: 0.4em 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: ${getShadow("default")};
 `;
 
 interface Props {
@@ -56,12 +56,12 @@ export default function ProgressHistory(props: Props) {
       {props.history.map((entry, i) => (
         <BarWrapper key={`entry-${i}`}>
           {!!entry.correct && (
-            <Bar color={"positive"} value={entry.correct} total={entry.total}>
+            <Bar color="positive" value={entry.correct} total={entry.total}>
               {entry.correct}
             </Bar>
           )}
           {!!entry.incorrect && (
-            <Bar color={"negative"} value={entry.incorrect} total={entry.total}>
+            <Bar color="negative" value={entry.incorrect} total={entry.total}>
               {entry.incorrect}
             </Bar>
           )}

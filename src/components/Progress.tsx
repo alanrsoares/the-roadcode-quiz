@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled, { getColor, useTheme } from "./styled";
+import styled, { getColor, getShadow, useTheme } from "./styled";
 
 import { ratio } from "../helpers";
 
@@ -11,7 +11,7 @@ const ProgressContainer = styled.div`
   background-color: ${getColor("neutral")};
   height: 1.8em;
   width: 100%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: ${getShadow("default")};
 `;
 export interface ProgressBarProps {
   ratio: number;

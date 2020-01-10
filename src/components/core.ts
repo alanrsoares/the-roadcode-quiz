@@ -1,4 +1,10 @@
-import styled, { Color, getColor, ThemedProps } from "./styled";
+import styled, {
+  Color,
+  getColor,
+  getRadius,
+  getShadow,
+  ThemedProps
+} from "./styled";
 
 export const icons = {
   // tslint:disable-next-line:max-line-length
@@ -41,9 +47,9 @@ export const Card = styled.div<CardProps>`
   min-height: 10vh;
   margin: 1em 0;
   padding: 0.4em;
-  border-radius: 0.3em;
+  border-radius: ${getRadius("lg")};
   background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: ${getShadow("default")};
   @media screen and (max-width: 600px) {
     margin: 1em 0.8em;
   }
@@ -66,7 +72,7 @@ export const Question = styled.div`
   font-weight: bold;
   background: ${getColor("primary")};
   padding: 0.3em;
-  border-radius: 0.2em;
+  border-radius: ${getRadius("md")};
   display: flex;
   justify-content: space-between;
   color: #333;
@@ -82,7 +88,8 @@ export const Image = styled.img<{ round?: boolean }>`
   width: 8em;
   height: 8em;
   overflow: hidden;
-  border-radius: ${props => (props.round ? "50%" : "0.2em")};
+  border-radius: ${props =>
+    props.round ? props.theme.radii.round : props.theme.radii.md};
   border: solid 0.2em ${getColor("white")};
   transition: border-radius 0.2s linear;
 `;
@@ -116,7 +123,7 @@ export const Option = styled.div<OptionProps>`
   padding: 0.6em 0.4em;
   margin: 0.2em 0;
   align-items: center;
-  border-radius: 0.2em;
+  border-radius: ${getRadius("md")};
   cursor: ${props => (props.isAnswered ? "" : "pointer")};
   background-color: ${getOptionBackgroundColor};
   color: ${props =>
@@ -163,7 +170,7 @@ const getPillBorder = (props: ThemedProps<PillProps>) =>
     : `solid 0.1em ${props.theme.colors.black}`;
 
 export const Pill = styled.span<PillProps>`
-  border-radius: 50%;
+  border-radius: ${getRadius("round")};
   min-width: 1.4em;
   min-height: 1.4em;
   display: flex;
@@ -192,7 +199,7 @@ export const NextButton = styled.button`
   font-size: 1.8em;
   color: white;
   border: none;
-  border-radius: 0.2em;
+  border-radius: ${getRadius("md")};
   padding: 0.3em 0.6em;
   flex: 1;
   @media screen and (max-width: 600px) {
