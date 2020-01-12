@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import baseStyled, {
+import styled, {
   ThemeContext,
   ThemedStyledInterface,
   ThemeProps as BaseThemeProps
@@ -77,4 +77,4 @@ export const getRadius = getThemeProp("radii");
 export const getFontSize = getThemeProp("fontSizes");
 export const getShadow = getThemeProp("shadows");
 
-export default baseStyled as ThemedStyledInterface<Theme>;
+export default styled as ThemedStyledInterface<Theme>;
