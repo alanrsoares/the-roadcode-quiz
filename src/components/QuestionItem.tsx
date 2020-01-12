@@ -8,7 +8,8 @@ import {
   ImageWrapper,
   Option,
   Pill,
-  Question,
+  QuestionContainer,
+  QuestionNumber,
   QuestionText
 } from "./core";
 
@@ -52,9 +53,9 @@ export default function QuestionItem(props: Props) {
 
   return (
     <Card>
-      <Question>
+      <QuestionContainer>
         <QuestionText>
-          #{props.index}: {props.question}
+          <QuestionNumber>{props.index * 6}</QuestionNumber> {props.question}
         </QuestionText>
         <ImageWrapper onClick={handleToggleRoundImage}>
           <Image
@@ -63,7 +64,7 @@ export default function QuestionItem(props: Props) {
             src={props.image.uri}
           />
         </ImageWrapper>
-      </Question>
+      </QuestionContainer>
       {answerKeys.map((key: string) => (
         <Option
           key={key}

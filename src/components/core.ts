@@ -67,7 +67,7 @@ export const SummaryCard = styled(Card)`
   text-align: center;
 `;
 
-export const Question = styled.div`
+export const QuestionContainer = styled.div`
   font-size: 1.2em;
   font-weight: bold;
   background: ${getColor("primary")};
@@ -79,6 +79,18 @@ export const Question = styled.div`
   margin-bottom: 0.2em;
 `;
 
+export const QuestionNumber = styled.div`
+  background-color: ${getColor("white")};
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: ${getRadius("round")};
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: ${props => (String(props.children).length > 1 ? "0.2em" : "")};
+  font-size: ${props => (String(props.children).length > 1 ? "1em" : "1.2em")};
+`;
+
 export const QuestionText = styled.div`
   margin: 0.2em;
   margin-right: 0.1em;
@@ -88,8 +100,7 @@ export const Image = styled.img<{ round?: boolean }>`
   width: 8em;
   height: 8em;
   overflow: hidden;
-  border-radius: ${props =>
-    props.round ? props.theme.radii.round : props.theme.radii.md};
+  border-radius: ${getRadius(props => (props.round ? "round" : "md"))};
   border: solid 0.2em ${getColor("white")};
   transition: border-radius 0.2s linear;
 `;
@@ -102,33 +113,28 @@ interface OptionProps {
   isCorrect: boolean;
 }
 
-const getOptionDisplay = (props: OptionProps) =>
-  props.isAnswered
-    ? props.isSelected || props.isCorrect
-      ? "flex"
-      : "none"
-    : "flex";
-
-const getOptionBackgroundColor = getColor<ThemedProps<OptionProps>>(props =>
-  props.isAnswered && props.isSelected
-    ? props.isCorrect
-      ? "positive"
-      : "negative"
-    : "muted"
-);
-
 export const Option = styled.div<OptionProps>`
-  display: ${getOptionDisplay};
+  display: ${props =>
+    props.isAnswered
+      ? props.isSelected || props.isCorrect
+        ? "flex"
+        : "none"
+      : "flex"};
   padding: 0.6em 0.4em;
   margin: 0.2em 0;
   align-items: center;
   border-radius: ${getRadius("md")};
   cursor: ${props => (props.isAnswered ? "" : "pointer")};
-  background-color: ${getOptionBackgroundColor};
-  color: ${props =>
+  background-color: ${getColor(props =>
     props.isAnswered && props.isSelected
-      ? props.theme.colors.white
-      : props.theme.colors.black};
+      ? props.isCorrect
+        ? "positive"
+        : "negative"
+      : "muted"
+  )};
+  color: ${getColor(props =>
+    props.isAnswered && props.isSelected ? "white" : "black"
+  )};
   transition: background-color 0.3s;
   :hover {
     background-color: ${props =>
