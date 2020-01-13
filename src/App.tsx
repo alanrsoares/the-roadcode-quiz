@@ -127,9 +127,9 @@ export default function App(props: Props) {
             >
               {state.status === "FAILED" ? (
                 <>
-                  {`Oh stink! You failed ${state.incorrectCount} questions`}.
+                  {`Oh no! You failed ${state.incorrectCount} questions`}.
                   <br />
-                  Don't give up just yet, try again.
+                  Don't give up just yet, go and try again.
                 </>
               ) : (
                 <>Awesome, you passed the test!</>

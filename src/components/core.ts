@@ -16,9 +16,19 @@ export const icons = {
 export const Shell = styled.div`
   display: flex;
   background-color: #dedede;
-  font-family: Lato, sans-serif;
+  font-family: Lato, Arial, Helvetica, sans-serif;
   color: ${getColor("black")};
   min-height: 100vh;
+  font-size: 18px;
+  @media screen and (max-height: 823px) {
+    font-size: 16px;
+  }
+  @media screen and (max-height: 700px) {
+    font-size: 15px;
+  }
+  @media screen and (max-height: 600px) {
+    font-size: 14px;
+  }
 `;
 
 export const AppContainer = styled.div`
@@ -26,7 +36,7 @@ export const AppContainer = styled.div`
   flex-direction: column;
   margin: 0 auto;
   padding-top: 1.8em;
-  max-width: 400px;
+  max-width: 414px;
   flex-grow: 1;
 `;
 
@@ -70,7 +80,7 @@ export const SummaryCard = styled(Card)`
   color: ${getColor("white")};
   font-size: 1.2em;
   line-height: 1.6em;
-  background-color: ${props => props.theme.colors[props.color ?? "white"]};
+  background-color: ${getColor(props => props.color ?? "white")};
   text-align: center;
 `;
 
