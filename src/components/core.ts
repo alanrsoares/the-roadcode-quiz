@@ -16,7 +16,7 @@ export const icons = {
 export const Shell = styled.div`
   display: flex;
   background-color: #dedede;
-  font-family: Roboto, sans-serif;
+  font-family: Lato, sans-serif;
   color: ${getColor("black")};
   min-height: 100vh;
 `;
@@ -25,16 +25,23 @@ export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 40px;
+  padding-top: 1.8em;
   max-width: 400px;
   flex-grow: 1;
 `;
 
-export const Header = styled.header`
+export const AppHeader = styled.header`
   font-size: 2em;
   text-align: center;
   color: ${getColor("secondary")};
   font-weight: bold;
+  padding: 0.6em;
+  @media screen and (max-width: 600px) {
+    font-size: 1.5em;
+    color: ${getColor("white")};
+    background-color: ${getColor("secondary")};
+    padding: 0.4em;
+  }
 `;
 
 interface CardProps {

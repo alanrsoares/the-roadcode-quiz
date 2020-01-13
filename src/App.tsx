@@ -5,7 +5,7 @@ import { IQuestionItem } from "./types";
 import {
   AppContainer,
   Footer,
-  Header,
+  AppHeader,
   NextButton,
   Progress,
   QuestionItem,
@@ -119,7 +119,7 @@ export default function App(props: Props) {
         correctCount={state.correctCount}
       />
       <AppContainer>
-        <Header>The Road Quiz</Header>
+        <AppHeader>NZ Road Code Quiz</AppHeader>
         <main>
           {state.isDone ? (
             <SummaryCard
