@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import styled, {
+  css as baseCSS,
   ThemeContext,
+  ThemedCssFunction,
   ThemedStyledInterface,
   ThemeProps as BaseThemeProps
 } from "styled-components";
@@ -17,7 +19,7 @@ export const colors = {
   white: "#FFF",
   gray: "#CCC",
   shadow: "rgba(0, 0, 0, 0.4)"
-};
+} as const;
 
 export const radii = {
   default: "0.2em",
@@ -25,26 +27,27 @@ export const radii = {
   md: "0.2em",
   lg: "0.3em",
   round: "50%"
-};
+} as const;
 
 export const shadows = {
   default: `0 2px 6px ${colors.shadow}`
-};
+} as const;
 
 const baseFontSize = 18;
 
 export const fontSizes = {
   default: baseFontSize,
-  small: baseFontSize * 0.8,
-  large: baseFontSize * 1.2
-};
+  sm: baseFontSize * 0.8,
+  md: baseFontSize,
+  lg: baseFontSize * 1.2
+} as const;
 
 export const theme = {
   colors,
   radii,
   fontSizes,
   shadows
-};
+} as const;
 
 export type Color = keyof typeof colors;
 
@@ -77,4 +80,5 @@ export const getRadius = getThemeProp("radii");
 export const getFontSize = getThemeProp("fontSizes");
 export const getShadow = getThemeProp("shadows");
 
+export const css = baseCSS as ThemedCssFunction<Theme>;
 export default styled as ThemedStyledInterface<Theme>;

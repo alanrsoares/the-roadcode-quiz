@@ -1,10 +1,10 @@
 import styled, {
   Color,
+  css,
   getColor,
   getRadius,
-  getShadow,
-  ThemedProps
-} from "./styled";
+  getShadow
+} from "components/styled";
 
 export const icons = {
   // tslint:disable-next-line:max-line-length
@@ -177,19 +177,23 @@ interface PillProps {
   isCorrect: boolean;
 }
 
-const getPillBackground = (props: ThemedProps<PillProps>) =>
-  props.isAnswered && (props.isSelected || props.isCorrect)
-    ? props.isCorrect
-      ? `${props.theme.colors.positive} ${icons.check}`
-      : `${props.theme.colors.white} ${icons.cross}`
-    : props.theme.colors.primary;
+const pillBackground = css<PillProps>`
+  ${props =>
+    props.isAnswered && (props.isSelected || props.isCorrect)
+      ? props.isCorrect
+        ? `${props.theme.colors.positive} ${icons.check}`
+        : `${props.theme.colors.white} ${icons.cross}`
+      : props.theme.colors.primary}
+`;
 
-const getPillBorder = (props: ThemedProps<PillProps>) =>
-  props.isAnswered && (props.isSelected || props.isCorrect)
-    ? props.isCorrect
-      ? `solid 0.1em ${props.theme.colors.white}`
-      : "none"
-    : `solid 0.1em ${props.theme.colors.black}`;
+const pillBorder = css<PillProps>`
+  ${props =>
+    props.isAnswered && (props.isSelected || props.isCorrect)
+      ? props.isCorrect
+        ? `solid 0.1em ${props.theme.colors.white}`
+        : "none"
+      : `solid 0.1em ${props.theme.colors.black}`}
+`;
 
 export const Pill = styled.span<PillProps>`
   border-radius: ${getRadius("round")};
@@ -202,8 +206,8 @@ export const Pill = styled.span<PillProps>`
   margin-left: 0.1em;
   font-weight: bold;
   padding: 0.2em;
-  background: ${getPillBackground};
-  border: ${getPillBorder};
+  background: ${pillBackground};
+  border: ${pillBorder};
 `;
 
 export const Footer = styled.footer`

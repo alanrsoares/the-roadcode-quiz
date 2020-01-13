@@ -11,9 +11,8 @@ import {
   QuestionContainer,
   QuestionNumber,
   QuestionText
-} from "./core";
-
-import { IQuestion } from "../types";
+} from "components/core";
+import { IQuestion } from "types";
 
 interface Props extends IQuestion {
   index: number;

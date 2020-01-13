@@ -1,21 +1,21 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-import { IQuestionItem } from "./types";
+import { IQuestionItem } from "types";
 
 import {
   AppContainer,
-  Footer,
   AppHeader,
+  Footer,
   NextButton,
   Progress,
   QuestionItem,
   Shell,
   SummaryCard
-} from "./components";
+} from "components";
 
-import { shuffle } from "./helpers";
-import Storage from "./Storage";
-import "./styles.css";
+import { shuffle } from "helpers";
+import Storage from "StorageAdapter";
+import "styles.css";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 
