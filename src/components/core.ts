@@ -15,13 +15,17 @@ export const icons = {
 
 export const Shell = styled.div`
   display: flex;
-  background-color: #dedede;
+  background-color: ${getColor("light")};
   font-family: Lato, Arial, Helvetica, sans-serif;
   color: ${getColor("black")};
   min-height: 100vh;
   font-size: 18px;
   @media screen and (max-height: 823px) {
     font-size: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/background.svg");
+    background-position: bottom;
   }
   @media screen and (max-height: 700px) {
     font-size: 15px;

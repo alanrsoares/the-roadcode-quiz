@@ -13,6 +13,7 @@ export const colors = {
   positive: "#49C04A",
   negative: "#D03930",
   neutral: "#AAA",
+  light: "#ABE0F9",
   muted: "#EAEAEA",
   hotpink: "#FC8BA4",
   black: "#333",
