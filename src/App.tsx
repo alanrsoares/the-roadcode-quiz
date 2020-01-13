@@ -49,53 +49,55 @@ interface Props {
   questions: IQuestionItem[];
 }
 
-const makeActionHandlers = (
+function useActionHandlers(
   setState: Dispatch<SetStateAction<State>>,
   questions: IQuestionItem[]
-) => ({
-  onNextQuestionClick() {
-    setState((state: State) =>
-      state.index < state.questionsAmount - 1
-        ? {
-            ...state,
-            index: state.index + 1,
-            isAnswered: false,
-            selectedOption: null
-          }
-        : state
-    );
-  },
-  onResetState() {
-    setState((state: State) => ({
-      ...INITIAL_STATE,
-      questionsAmount: state.questionsAmount,
-      questions: shuffle(questions).slice(0, state.questionsAmount)
-    }));
-  },
-  onOptionSelection(selectedOption: string, isCorrect: boolean) {
-    setState((state: State) => {
-      const isDone = state.index === state.questionsAmount - 1;
-      const incorrectCount = !isCorrect
-        ? state.incorrectCount + 1
-        : state.incorrectCount;
-      const correctCount = isCorrect
-        ? state.correctCount + 1
-        : state.correctCount;
-      const isFailed = incorrectCount > 3;
+) {
+  return {
+    onNextQuestionClick() {
+      setState((state: State) =>
+        state.index < state.questionsAmount - 1
+          ? {
+              ...state,
+              index: state.index + 1,
+              isAnswered: false,
+              selectedOption: null
+            }
+          : state
+      );
+    },
+    onResetState() {
+      setState((state: State) => ({
+        ...INITIAL_STATE,
+        questionsAmount: state.questionsAmount,
+        questions: shuffle(questions).slice(0, state.questionsAmount)
+      }));
+    },
+    onOptionSelection(selectedOption: string, isCorrect: boolean) {
+      setState((state: State) => {
+        const isDone = state.index === state.questionsAmount - 1;
+        const incorrectCount = !isCorrect
+          ? state.incorrectCount + 1
+          : state.incorrectCount;
+        const correctCount = isCorrect
+          ? state.correctCount + 1
+          : state.correctCount;
+        const isFailed = incorrectCount > 3;
 
-      return {
-        ...state,
-        selectedOption,
-        answeredCount: state.answeredCount + 1,
-        correctCount,
-        incorrectCount,
-        isDone: isDone || isFailed,
-        isAnswered: true,
-        status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS"
-      };
-    });
-  }
-});
+        return {
+          ...state,
+          selectedOption,
+          answeredCount: state.answeredCount + 1,
+          correctCount,
+          incorrectCount,
+          isDone: isDone || isFailed,
+          isAnswered: true,
+          status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS"
+        };
+      });
+    }
+  };
+}
 
 export default function App(props: Props) {
   const defaultState = {
@@ -107,7 +109,7 @@ export default function App(props: Props) {
 
   useEffect(() => Storage.persist(state));
 
-  const actions = makeActionHandlers(setState, props.questions);
+  const actions = useActionHandlers(setState, props.questions);
 
   const selectedItem = state.questions[state.index];
 
