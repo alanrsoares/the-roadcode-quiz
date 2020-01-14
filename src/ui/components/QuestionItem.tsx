@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 
+import { IQuestion } from "types";
 import {
   Card,
   Hint,
@@ -11,8 +12,7 @@ import {
   QuestionContainer,
   QuestionNumber,
   QuestionText
-} from "components/core";
-import { IQuestion } from "types";
+} from "ui/components/core";
 
 interface Props extends IQuestion {
   index: number;

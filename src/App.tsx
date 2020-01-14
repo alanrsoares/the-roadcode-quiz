@@ -5,19 +5,19 @@ import { IQuestionItem } from "types";
 import {
   AppContainer,
   AppHeader,
+  ButtonIcon,
   Footer,
   NextButton,
   Progress,
   QuestionItem,
   Shell,
-  SummaryCard,
-  ButtonIcon
-} from "components";
+  SummaryCard
+} from "ui/components";
 
 import { shuffle } from "helpers";
+import useUpdateChecker from "lib/useUpdateChecker";
 import Storage from "StorageAdapter";
 import "styles.css";
-import useUpdateChecker from "lib/useUpdateChecker";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 

@@ -4,7 +4,7 @@ import styled, {
   getColor,
   getRadius,
   getShadow
-} from "components/styled";
+} from "ui/components/styled";
 
 export const icons = {
   // tslint:disable-next-line:max-line-length
