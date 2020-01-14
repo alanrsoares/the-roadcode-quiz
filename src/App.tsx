@@ -16,6 +16,7 @@ import {
 import { shuffle } from "helpers";
 import Storage from "StorageAdapter";
 import "styles.css";
+import useUpdateChecker from "lib/useUpdateChecker";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 
@@ -108,6 +109,8 @@ export default function App(props: Props) {
   const [state, setState] = useState<State>(Storage.read(defaultState));
 
   useEffect(() => Storage.persist(state));
+
+  useUpdateChecker();
 
   const actions = useActionHandlers(setState, props.questions);
 

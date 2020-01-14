@@ -20,12 +20,12 @@ export const Shell = styled.div`
   color: ${getColor("black")};
   min-height: 100vh;
   font-size: 18px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/background.svg");
+  background-position: bottom;
   @media screen and (max-height: 823px) {
     font-size: 16px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/background.svg");
-    background-position: bottom;
   }
   @media screen and (max-height: 700px) {
     font-size: 15px;
