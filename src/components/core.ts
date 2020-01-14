@@ -26,6 +26,7 @@ export const Shell = styled.div`
   background-position: bottom;
   @media screen and (max-height: 823px) {
     font-size: 16px;
+    background-size: contain;
   }
   @media screen and (max-height: 700px) {
     font-size: 15px;
