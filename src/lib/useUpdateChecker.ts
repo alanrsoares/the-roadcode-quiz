@@ -95,7 +95,9 @@ export async function tryCheckForUpdates() {
   }
 }
 
-export default function useUpdateChecker(interval = 60000 * 30) {
+const UPDATE_CHECK_INTERVAL = 60000 * 30;
+
+export default function useUpdateChecker(interval = UPDATE_CHECK_INTERVAL) {
   useEffect(() => {
     tryCheckForUpdates();
     const intervalId = window.setInterval(tryCheckForUpdates, interval);
