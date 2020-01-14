@@ -248,7 +248,7 @@ export const NextButton = styled.button<{ color?: Color }>`
   font-size: 1.8em;
   color: white;
   border: none;
-  border-radius: ${getRadius("md")};
+  border-radius: 1em;
   padding: 0.3em 0.6em;
   height: 2em;
   flex: 1;
@@ -256,13 +256,13 @@ export const NextButton = styled.button<{ color?: Color }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   @media screen and (max-width: 600px) {
     align-self: flex-end;
     position: fixed;
     width: 92%;
     margin: 0 4%;
     margin-top: -4%;
-    border-radius: 1em;
     box-shadow: ${getShadow("default")};
     opacity: 0.95;
   }
