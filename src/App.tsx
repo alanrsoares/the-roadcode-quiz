@@ -10,7 +10,8 @@ import {
   Progress,
   QuestionItem,
   Shell,
-  SummaryCard
+  SummaryCard,
+  ButtonIcon
 } from "components";
 
 import { shuffle } from "helpers";
@@ -153,10 +154,15 @@ export default function App(props: Props) {
         <Footer>
           {!!state.isAnswered &&
             (state.isDone ? (
-              <NextButton onClick={actions.onResetState}>Play again</NextButton>
+              <NextButton onClick={actions.onResetState} color="positive">
+                Play again!
+              </NextButton>
             ) : (
               <NextButton onClick={actions.onNextQuestionClick}>
-                Next question
+                <span style={{ marginTop: "-0.2em" }}>Next question</span>
+                <ButtonIcon>
+                  <span style={{ marginTop: "-0.2em" }}>»</span>
+                </ButtonIcon>
               </NextButton>
             ))}
         </Footer>

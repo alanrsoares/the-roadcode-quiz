@@ -225,18 +225,48 @@ export const Footer = styled.footer`
   }
 `;
 
-export const NextButton = styled.button`
-  background-color: ${getColor("secondary")};
+export const ButtonIcon = styled.div`
+  position: absolute;
+  right: 0;
+  margin-right: 0.3em;
+  width: 1em;
+  height: 1em;
+  padding: 0.08em;
+  vertical-align: middle;
+  color: ${getColor("secondary")};
+  background: ${getColor("white")};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.2em;
+`;
+
+export const NextButton = styled.button<{ color?: Color }>`
+  background-color: ${getColor(props => props.color ?? "secondary")};
   font-size: 1.8em;
   color: white;
   border: none;
   border-radius: ${getRadius("md")};
   padding: 0.3em 0.6em;
+  height: 2em;
   flex: 1;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media screen and (max-width: 600px) {
     align-self: flex-end;
     position: fixed;
-    width: 100%;
-    border-radius: 0;
+    width: 92%;
+    margin: 0 4%;
+    margin-top: -4%;
+    border-radius: 1em;
+    box-shadow: ${getShadow("default")};
+    opacity: 0.95;
+  }
+  &:active {
+    opacity: 0.9;
   }
 `;

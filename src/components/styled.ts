@@ -31,7 +31,8 @@ export const radii = {
 } as const;
 
 export const shadows = {
-  default: `0 2px 6px ${colors.shadow}`
+  default: `0 2px 6px ${colors.shadow}`,
+  top: `0 -2px 6px ${colors.shadow}`
 } as const;
 
 const baseFontSize = 18;
