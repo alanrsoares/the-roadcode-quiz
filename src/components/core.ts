@@ -22,7 +22,7 @@ export const Shell = styled.div`
   font-size: 18px;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("/background.svg");
+  background-image: url("background.svg");
   background-position: bottom;
   @media screen and (max-height: 823px) {
     font-size: 16px;
