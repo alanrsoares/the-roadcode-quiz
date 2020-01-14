@@ -8,11 +8,10 @@ import {
   ButtonIcon,
   Footer,
   NextButton,
-  Progress,
-  QuestionItem,
   Shell,
   SummaryCard
 } from "ui/components";
+import { Progress, QuestionItem } from "ui/compounds";
 
 import { shuffle } from "helpers";
 import useUpdateChecker from "lib/useUpdateChecker";

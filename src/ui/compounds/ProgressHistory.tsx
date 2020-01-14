@@ -2,12 +2,8 @@ import React from "react";
 
 import { ratio } from "helpers";
 import { History } from "types";
-import styled, {
-  Color,
-  getColor,
-  getRadius,
-  getShadow
-} from "ui/components/styled";
+import styled, { getColor, getRadius, getShadow } from "ui/styled";
+import { Color } from "ui/theme";
 
 const Wrapper = styled.div`
   background-color: #fff;

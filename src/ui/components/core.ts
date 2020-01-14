@@ -1,10 +1,5 @@
-import styled, {
-  Color,
-  css,
-  getColor,
-  getRadius,
-  getShadow
-} from "ui/components/styled";
+import styled, { css, getColor, getRadius, getShadow } from "ui/styled";
+import { Color } from "ui/theme";
 
 export const icons = {
   // tslint:disable-next-line:max-line-length

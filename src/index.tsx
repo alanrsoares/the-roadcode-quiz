@@ -6,7 +6,7 @@ import { cache as questions } from "db.json";
 import registerServiceWorker from "registerServiceWorker";
 
 import App from "App";
-import { theme } from "ui/components/styled";
+import theme from "ui/theme";
 
 import { version } from "../package.json";
 

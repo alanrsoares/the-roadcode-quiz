@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ratio } from "helpers";
-import styled, { getColor, getShadow, useTheme } from "ui/components/styled";
+import styled, { getColor, getShadow, useTheme } from "ui/styled";
 
 const ProgressContainer = styled.div`
   display: flex;
