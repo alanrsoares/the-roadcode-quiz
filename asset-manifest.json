@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/the-roadcode-quiz/static/css/main.87a707f7.chunk.css",
-    "main.js": "/the-roadcode-quiz/static/js/main.404c0b5d.chunk.js",
-    "main.js.map": "/the-roadcode-quiz/static/js/main.404c0b5d.chunk.js.map",
+    "main.js": "/the-roadcode-quiz/static/js/main.644a5b8b.chunk.js",
+    "main.js.map": "/the-roadcode-quiz/static/js/main.644a5b8b.chunk.js.map",
     "runtime-main.js": "/the-roadcode-quiz/static/js/runtime-main.c26a4b56.js",
     "runtime-main.js.map": "/the-roadcode-quiz/static/js/runtime-main.c26a4b56.js.map",
-    "static/js/2.3055d64f.chunk.js": "/the-roadcode-quiz/static/js/2.3055d64f.chunk.js",
-    "static/js/2.3055d64f.chunk.js.map": "/the-roadcode-quiz/static/js/2.3055d64f.chunk.js.map",
+    "static/js/2.686b2006.chunk.js": "/the-roadcode-quiz/static/js/2.686b2006.chunk.js",
+    "static/js/2.686b2006.chunk.js.map": "/the-roadcode-quiz/static/js/2.686b2006.chunk.js.map",
     "index.html": "/the-roadcode-quiz/index.html",
-    "precache-manifest.f37ae6120211772301dcc0f9cd6602bc.js": "/the-roadcode-quiz/precache-manifest.f37ae6120211772301dcc0f9cd6602bc.js",
+    "precache-manifest.7b5cb5489dde5174267c7b95182437cf.js": "/the-roadcode-quiz/precache-manifest.7b5cb5489dde5174267c7b95182437cf.js",
     "service-worker.js": "/the-roadcode-quiz/service-worker.js",
     "static/css/main.87a707f7.chunk.css.map": "/the-roadcode-quiz/static/css/main.87a707f7.chunk.css.map",
-    "static/js/2.3055d64f.chunk.js.LICENSE": "/the-roadcode-quiz/static/js/2.3055d64f.chunk.js.LICENSE"
+    "static/js/2.686b2006.chunk.js.LICENSE": "/the-roadcode-quiz/static/js/2.686b2006.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.c26a4b56.js",
-    "static/js/2.3055d64f.chunk.js",
+    "static/js/2.686b2006.chunk.js",
     "static/css/main.87a707f7.chunk.css",
-    "static/js/main.404c0b5d.chunk.js"
+    "static/js/main.644a5b8b.chunk.js"
   ]
 }
