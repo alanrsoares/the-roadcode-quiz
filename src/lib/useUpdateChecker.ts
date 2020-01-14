@@ -57,7 +57,7 @@ export async function checkForAppUpdates() {
 
   const fetchWithTimeoutHandler = fetchWithTimeout(5000, onTimeout);
 
-  const response = await fetchWithTimeoutHandler(`/meta.json?t=${Date.now()}`);
+  const response = await fetchWithTimeoutHandler(`meta.json?t=${Date.now()}`);
   const meta = await response.json();
   const latestVersion = meta.version;
   const currentVersion = global.appVersion;
