@@ -28,10 +28,7 @@
       "prettier --write",
       "git add"
     ],
-    "src/**/*.{ts,tsx}(x)": [
-      "tsc --noEmit",
-      "git add"
-    ]
+    "src/**/*.{ts,tsx}": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "react": "^16.12.0",
