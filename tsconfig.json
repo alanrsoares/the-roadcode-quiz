@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // default CRA configs
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -13,7 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react",
+    // custom configs
     "baseUrl": "src",
     "plugins": [
       {
