@@ -118,7 +118,7 @@ export const Image = styled.img<{ round?: boolean }>`
   height: 8em;
   overflow: hidden;
   border-radius: ${getRadius(props => (props.round ? "round" : "md"))};
-  border: solid 0.2em ${getColor("wtflol")};
+  border: solid 0.2em ${getColor("white")};
   transition: border-radius 0.2s linear;
 `;
 
@@ -229,7 +229,7 @@ export const ButtonIcon = styled.div`
   padding: 0.08em;
   vertical-align: middle;
   color: ${getColor("secondary")};
-  background: ${getColor("white")};
+  background: ${getColor("foo")};
   display: flex;
   align-items: center;
   justify-content: center;
