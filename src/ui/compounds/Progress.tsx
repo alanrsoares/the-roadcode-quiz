@@ -38,11 +38,6 @@ const ProgressText = styled.div`
   padding: 0.3em 0.4em;
 `;
 
-interface ProgressRatio {
-  ratio: number;
-  color: Color;
-}
-
 interface Props {
   questionsCount: number;
   correctCount: number;
@@ -57,7 +52,7 @@ const Progress: React.FC<Props> = (props: Props) => {
   const incorrectRatio = getSampleRatio(props.incorrectCount);
   const correctRatio = getSampleRatio(props.correctCount);
 
-  const ratios: ProgressRatio[] = [
+  const ratios: ProgressBarProps[] = [
     {
       ratio: incorrectRatio,
       color: "negative"
