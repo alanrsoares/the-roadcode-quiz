@@ -252,6 +252,7 @@ export const NextButton = styled.button<{ color?: Color }>`
   align-items: center;
   justify-content: center;
   position: relative;
+  outline: none;
   @media screen and (max-width: 600px) {
     align-self: flex-end;
     position: fixed;
