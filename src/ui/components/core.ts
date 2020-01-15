@@ -229,7 +229,7 @@ export const ButtonIcon = styled.div`
   padding: 0.08em;
   vertical-align: middle;
   color: ${getColor("secondary")};
-  background: ${getColor("foo")};
+  background: ${getColor("onemore")};
   display: flex;
   align-items: center;
   justify-content: center;

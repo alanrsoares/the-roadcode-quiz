@@ -23,13 +23,6 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.{ts,tsx}(x)": "tsc -p tsconfig.json --noEmit"
-  },
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
