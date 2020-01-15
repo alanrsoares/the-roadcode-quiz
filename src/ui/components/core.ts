@@ -118,7 +118,7 @@ export const Image = styled.img<{ round?: boolean }>`
   height: 8em;
   overflow: hidden;
   border-radius: ${getRadius(props => (props.round ? "round" : "md"))};
-  border: solid 0.2em ${getColor("white")};
+  border: solid 0.2em ${getColor("errorfcksaks")};
   transition: border-radius 0.2s linear;
 `;
 
