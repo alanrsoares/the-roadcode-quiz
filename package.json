@@ -32,7 +32,6 @@
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "source-map-explorer": "^2.2.2",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
@@ -45,6 +44,7 @@
     "normalize.css": "^8.0.1",
     "prettier": "^1.19.1",
     "react-scripts": "^3.3.0",
+    "source-map-explorer": "^2.2.2",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4",
     "typescript-styled-plugin": "^0.15.0"
