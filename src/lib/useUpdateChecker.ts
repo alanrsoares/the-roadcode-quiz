@@ -75,9 +75,9 @@ export function forceReload() {
 export async function tryInstallUpdate() {
   try {
     await purgeCache();
-    forceReload();
+    window.setTimeout(forceReload, 300);
   } catch (error) {
-    console.log("failed to purge cache", error);
+    console.log("Failed to purge cache", error);
   }
 }
 

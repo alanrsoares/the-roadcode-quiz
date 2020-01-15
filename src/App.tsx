@@ -153,11 +153,14 @@ export default function App(props: Props) {
         <Footer>
           {!!state.isAnswered &&
             (state.isDone ? (
-              <NextButton onClick={actions.onResetState} color="positive">
+              <NextButton onTouchEnd={actions.onResetState} color="positive">
                 Play again!
               </NextButton>
             ) : (
-              <NextButton onClick={actions.onNextQuestionClick}>
+              <NextButton
+                onClick={actions.onNextQuestionClick}
+                onTouchEnd={actions.onNextQuestionClick}
+              >
                 <span style={{ marginTop: "-0.2em" }}>Next question</span>
                 <ButtonIcon>
                   <span style={{ marginTop: "-0.2em" }}>»</span>
