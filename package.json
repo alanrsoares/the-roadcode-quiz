@@ -27,6 +27,10 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write",
       "git add"
+    ],
+    "src/**/*.{ts,tsx}(x)": [
+      "tsc --noEmit",
+      "git add"
     ]
   },
   "dependencies": {
