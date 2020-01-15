@@ -19,7 +19,8 @@
     "gh-pages": "^2.2.0",
     "normalize.css": "^8.0.1",
     "tslint": "^5.20.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "typescript-styled-plugin": "^0.15.0"
   },
   "scripts": {
     "start": "react-scripts start",
