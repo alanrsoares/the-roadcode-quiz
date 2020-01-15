@@ -151,7 +151,7 @@ export default function App(props: Props) {
           )}
         </main>
         <Footer>
-          {!!state.isAnswered &&
+          {state.isAnswered &&
             (state.isDone ? (
               <NextButton
                 onClick={actions.onResetState}
