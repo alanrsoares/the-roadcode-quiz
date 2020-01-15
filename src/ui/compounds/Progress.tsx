@@ -1,7 +1,8 @@
 import React from "react";
 
 import { ratio } from "helpers";
-import styled, { getColor, getShadow, useTheme } from "ui/styled";
+import styled, { getColor, getShadow } from "ui/styled";
+import { Color } from "ui/theme";
 
 const ProgressContainer = styled.div`
   display: flex;
@@ -12,14 +13,15 @@ const ProgressContainer = styled.div`
   width: 100%;
   box-shadow: ${getShadow("default")};
 `;
+
 export interface ProgressBarProps {
   ratio: number;
-  color: string;
+  color: Color;
 }
 
 const ProgressBar = styled.div<ProgressBarProps>`
   height: 1.8em;
-  background-color: ${props => props.color};
+  background-color: ${getColor(props => props.color)};
   width: ${props => props.ratio}%;
   transition: 0.3s;
 `;
@@ -36,6 +38,11 @@ const ProgressText = styled.div`
   padding: 0.3em 0.4em;
 `;
 
+interface ProgressRatio {
+  ratio: number;
+  color: Color;
+}
+
 interface Props {
   questionsCount: number;
   correctCount: number;
@@ -50,16 +57,14 @@ const Progress: React.FC<Props> = (props: Props) => {
   const incorrectRatio = getSampleRatio(props.incorrectCount);
   const correctRatio = getSampleRatio(props.correctCount);
 
-  const { colors } = useTheme();
-
-  const ratios = [
+  const ratios: ProgressRatio[] = [
     {
       ratio: incorrectRatio,
-      color: colors.negative
+      color: "negative"
     },
     {
       ratio: correctRatio,
-      color: colors.positive
+      color: "positive"
     }
   ];
 
