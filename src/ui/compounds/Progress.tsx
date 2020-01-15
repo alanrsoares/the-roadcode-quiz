@@ -66,7 +66,7 @@ const Progress: React.FC<Props> = (props: Props) => {
   return (
     <ProgressContainer>
       {ratios.map(x => (
-        <ProgressBar key={x.color} ratio={x.ratio} color={x.color} />
+        <ProgressBar key={x.color} {...x} />
       ))}
       <ProgressText>
         {answeredCount} of {props.questionsCount} ({Math.round(progressRatio)}
