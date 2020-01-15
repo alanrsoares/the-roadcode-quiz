@@ -54,7 +54,7 @@ export default function QuestionItem(props: Props) {
     <Card>
       <QuestionContainer>
         <QuestionText>
-          <QuestionNumber>{props.index * 6}</QuestionNumber> {props.question}
+          <QuestionNumber>{props.index}</QuestionNumber> {props.question}
         </QuestionText>
         <ImageWrapper onClick={handleToggleRoundImage}>
           <Image

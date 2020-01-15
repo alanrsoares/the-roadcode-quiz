@@ -153,7 +153,11 @@ export default function App(props: Props) {
         <Footer>
           {!!state.isAnswered &&
             (state.isDone ? (
-              <NextButton onTouchEnd={actions.onResetState} color="positive">
+              <NextButton
+                onClick={actions.onResetState}
+                onTouchEnd={actions.onResetState}
+                color="positive"
+              >
                 Play again!
               </NextButton>
             ) : (
