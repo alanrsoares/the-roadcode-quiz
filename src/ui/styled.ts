@@ -1,10 +1,10 @@
-import { useContext } from "react";
 import styled, {
   css as baseCSS,
-  ThemeContext,
   ThemedCssFunction,
   ThemedStyledInterface,
-  ThemeProps as BaseThemeProps
+  ThemeProps as BaseThemeProps,
+  // @ts-ignore (ignore while @types/styled-components isn't up to date)
+  useTheme as baseUseTheme
 } from "styled-components";
 
 import { Theme } from "ui/theme";
@@ -13,9 +13,7 @@ export type ThemeProps = BaseThemeProps<Theme>;
 
 export type ThemedProps<P = {}> = ThemeProps & P;
 
-export function useTheme() {
-  return useContext<Theme>(ThemeContext);
-}
+export const useTheme = baseUseTheme as () => Theme;
 
 export const getThemeProp = <P extends keyof Theme>(key: P) => <
   TProps extends ThemeProps = ThemeProps

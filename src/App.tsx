@@ -13,9 +13,10 @@ import {
 } from "ui/components";
 import { Progress, QuestionItem } from "ui/compounds";
 
-import { shuffle } from "helpers";
-import useUpdateChecker from "lib/useUpdateChecker";
 import Storage from "StorageAdapter";
+import useUpdateChecker from "lib/useUpdateChecker";
+import { shuffle } from "helpers";
+
 import "styles.css";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
@@ -110,6 +111,7 @@ export default function App(props: Props) {
 
   useEffect(() => Storage.persist(state));
 
+  // performs automatic update check
   useUpdateChecker();
 
   const actions = useActionHandlers(setState, props.questions);
