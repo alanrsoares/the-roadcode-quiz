@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
 import { IQuestionItem } from "types";
 
@@ -13,11 +13,9 @@ import {
 } from "ui/components";
 import { Progress, QuestionItem } from "ui/compounds";
 
-import Storage from "StorageAdapter";
 import useUpdateChecker from "lib/useUpdateChecker";
 import { shuffle } from "helpers";
-
-import "styles.css";
+import { useCachedState } from "lib/hooks";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 
@@ -107,9 +105,7 @@ export default function App(props: Props) {
     questions: props.questions.slice(0, INITIAL_STATE.questionsAmount)
   };
 
-  const [state, setState] = useState<State>(Storage.read(defaultState));
-
-  useEffect(() => Storage.persist(state));
+  const [state, setState] = useCachedState<State>("/state", defaultState);
 
   // performs automatic update check
   useUpdateChecker();

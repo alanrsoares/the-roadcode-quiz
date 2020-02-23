@@ -195,17 +195,16 @@ const pillBorder = css<PillProps>`
       : `solid 0.1em ${props.theme.colors.black}`}
 `;
 
-export const Pill = styled.span<PillProps>`
+export const Pill = styled.div<PillProps>`
   border-radius: ${getRadius("round")};
-  min-width: 1.4em;
-  min-height: 1.4em;
+  width: 1.4em;
+  height: 1.4em;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 0.4em;
   margin-left: 0.1em;
   font-weight: bold;
-  padding: 0.2em;
   background: ${pillBackground};
   border: ${pillBorder};
 `;
