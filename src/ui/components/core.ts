@@ -98,8 +98,8 @@ export const QuestionContainer = styled.div`
 
 export const QuestionNumber = styled.div`
   background-color: ${getColor("white")};
-  width: 1.2em;
-  height: 1.2em;
+  min-width: 1.2em;
+  min-height: 1.2em;
   border-radius: ${getRadius("round")};
   display: inline-block;
   text-align: center;
@@ -197,14 +197,15 @@ const pillBorder = css<PillProps>`
 
 export const Pill = styled.div<PillProps>`
   border-radius: ${getRadius("round")};
-  width: 1.4em;
-  height: 1.4em;
+  min-width: 2em;
+  min-height: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 0.4em;
   margin-left: 0.1em;
   font-weight: bold;
+  padding: 0.2em;
   background: ${pillBackground};
   border: ${pillBorder};
 `;
