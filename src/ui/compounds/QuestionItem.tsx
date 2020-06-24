@@ -11,7 +11,7 @@ import {
   Pill,
   QuestionContainer,
   QuestionNumber,
-  QuestionText
+  QuestionText,
 } from "ui/components/core";
 
 interface Props extends IQuestion {
@@ -24,7 +24,7 @@ export default function QuestionItem(props: Props) {
   const [showRoundImage, setShowRoundImage] = useState(true);
 
   const handleToggleRoundImage = useCallback(
-    () => setShowRoundImage(prev => !prev),
+    () => setShowRoundImage((prev) => !prev),
     []
   );
 
@@ -87,7 +87,9 @@ export default function QuestionItem(props: Props) {
           {props.selected !== props.correctAnswer && (
             <HintHighlight>Correct Answer: {props.correctAnswer}</HintHighlight>
           )}
-          {`For more information about this question refer to page ${props.roadCodePage} of the Official New Zealand Road Code.`}
+          For more information about this question refer to page
+          <b> {props.roadCodePage} </b>
+          of the Official New Zealand Road Code.
         </Hint>
       )}
     </Card>

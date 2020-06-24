@@ -35,22 +35,22 @@ export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 1.8em;
+  padding-top: 1.8rem;
   max-width: 414px;
   flex-grow: 1;
 `;
 
 export const AppHeader = styled.header`
-  font-size: 2em;
+  font-size: 2rem;
   text-align: center;
   color: ${getColor("secondary")};
-  font-weight: bold;
-  padding: 0.6em;
+  font-weight: 900;
+  padding: 0.6rem;
   @media screen and (max-width: 600px) {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     color: ${getColor("white")};
     background-color: ${getColor("secondary")};
-    padding: 0.4em;
+    padding: 0.4rem;
   }
 `;
 
@@ -63,12 +63,12 @@ export const Card = styled.div<CardProps>`
   flex-direction: column;
   min-height: 10vh;
   margin: 1em 0;
-  padding: 0.4em;
+  padding: 0.4rem;
   border-radius: ${getRadius("lg")};
   background-color: white;
   box-shadow: ${getShadow("default")};
   @media screen and (max-width: 600px) {
-    margin: 1em 0.8em;
+    margin: 1rem 0.8rem;
   }
 `;
 
@@ -78,28 +78,28 @@ export const SummaryCard = styled(Card)`
   min-height: 10vh;
   font-weight: bold;
   color: ${getColor("white")};
-  font-size: 1.2em;
-  line-height: 1.6em;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   background-color: ${getColor((props) => props.color ?? "white")};
   text-align: center;
 `;
 
 export const QuestionContainer = styled.div`
-  font-size: 1.2em;
+  font-size: 1.2rem;
   font-weight: bold;
   background: ${getColor("primary")};
-  padding: 0.3em;
+  padding: 0.3rem;
   border-radius: ${getRadius("md")};
   display: flex;
   justify-content: space-between;
   color: #333;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.2rem;
 `;
 
 export const QuestionNumber = styled.div`
   background-color: ${getColor("white")};
-  min-width: 1.2em;
-  min-height: 1.2em;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: ${getRadius("round")};
   display: inline-block;
   text-align: center;
@@ -110,16 +110,16 @@ export const QuestionNumber = styled.div`
 `;
 
 export const QuestionText = styled.div`
-  margin: 0.2em;
-  margin-right: 0.1em;
+  margin: 0.2rem;
+  margin-right: 0.1rem;
 `;
 
 export const Image = styled.img<{ round?: boolean }>`
-  width: 8em;
-  height: 8em;
+  width: 8rem;
+  height: 8rem;
   overflow: hidden;
   border-radius: ${getRadius((props) => (props.round ? "round" : "md"))};
-  border: solid 0.2em ${getColor("white")};
+  border: solid 0.2rem ${getColor("white")};
   transition: border-radius 0.2s linear;
 `;
 
@@ -138,8 +138,8 @@ export const Option = styled.div<OptionProps>`
         ? "flex"
         : "none"
       : "flex"};
-  padding: 0.6em 0.4em;
-  margin: 0.2em 0;
+  padding: 0.6rem 0.4em;
+  margin: 0.2rem 0;
   font-weight: bold;
   align-items: center;
   border-radius: ${getRadius("md")};
@@ -166,11 +166,12 @@ export const Option = styled.div<OptionProps>`
 
 export const Hint = styled.div`
   color: #666;
-  padding: 0.2em;
+  padding: 0.75rem 0.25rem;
 `;
 
 export const HintHighlight = styled.p`
   color: ${getColor("negative")};
+  font-weight: bold;
 `;
 
 interface PillProps {
@@ -199,15 +200,15 @@ const pillBorder = css<PillProps>`
 
 export const Pill = styled.div<PillProps>`
   border-radius: ${getRadius("round")};
-  min-width: 2em;
-  min-height: 2em;
+  min-width: 2rem;
+  min-height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 0.4em;
-  margin-left: 0.1em;
+  margin-right: 0.4rem;
+  margin-left: 0.1rem;
   font-weight: bold;
-  padding: 0.2em;
+  padding: 0.2rem;
   background: ${pillBackground};
   border: ${pillBorder};
 `;
@@ -225,29 +226,29 @@ export const Footer = styled.footer`
 export const ButtonIcon = styled.div`
   position: absolute;
   right: 0;
-  margin-right: 0.3em;
-  width: 1em;
-  height: 1em;
-  padding: 0.08em;
+  margin-right: 0.3rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.08rem;
   vertical-align: middle;
   color: ${getColor("secondary")};
   background: ${getColor("white")};
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: ${getRadius("round")};
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.75rem;
 `;
 
 export const NextButton = styled.button<{ color?: Color }>`
   background-color: ${getColor((props) => props.color ?? "secondary")};
-  font-size: 1.8em;
+  font-size: 1.75rem;
   color: white;
   border: none;
-  border-radius: 1em;
-  padding: 0.3em 0.6em;
-  height: 2em;
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  height: 3.25rem;
   flex: 1;
   transition: opacity 0.3s ease-in-out;
   display: flex;
@@ -256,6 +257,7 @@ export const NextButton = styled.button<{ color?: Color }>`
   position: relative;
   outline: none;
   user-select: none;
+  cursor: pointer;
   @media screen and (max-width: 600px) {
     align-self: flex-end;
     position: fixed;
