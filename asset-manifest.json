@@ -1,22 +1,19 @@
 {
   "files": {
-    "main.css": "/the-roadcode-quiz/static/css/main.87a707f7.chunk.css",
-    "main.js": "/the-roadcode-quiz/static/js/main.33402b14.chunk.js",
-    "main.js.map": "/the-roadcode-quiz/static/js/main.33402b14.chunk.js.map",
-    "runtime-main.js": "/the-roadcode-quiz/static/js/runtime-main.c26a4b56.js",
-    "runtime-main.js.map": "/the-roadcode-quiz/static/js/runtime-main.c26a4b56.js.map",
-    "static/js/2.686b2006.chunk.js": "/the-roadcode-quiz/static/js/2.686b2006.chunk.js",
-    "static/js/2.686b2006.chunk.js.map": "/the-roadcode-quiz/static/js/2.686b2006.chunk.js.map",
-    "index.html": "/the-roadcode-quiz/index.html",
-    "precache-manifest.85d912a6985f67a7956939ac79f07d8a.js": "/the-roadcode-quiz/precache-manifest.85d912a6985f67a7956939ac79f07d8a.js",
-    "service-worker.js": "/the-roadcode-quiz/service-worker.js",
-    "static/css/main.87a707f7.chunk.css.map": "/the-roadcode-quiz/static/css/main.87a707f7.chunk.css.map",
-    "static/js/2.686b2006.chunk.js.LICENSE": "/the-roadcode-quiz/static/js/2.686b2006.chunk.js.LICENSE"
+    "main.js": "/static/js/main.6a42af48.chunk.js",
+    "main.js.map": "/static/js/main.6a42af48.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4b50946e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4b50946e.js.map",
+    "static/js/2.1b3f83bc.chunk.js": "/static/js/2.1b3f83bc.chunk.js",
+    "static/js/2.1b3f83bc.chunk.js.map": "/static/js/2.1b3f83bc.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.80b24b7152003cdca57ae45e8e9afed4.js": "/precache-manifest.80b24b7152003cdca57ae45e8e9afed4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/2.1b3f83bc.chunk.js.LICENSE.txt": "/static/js/2.1b3f83bc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c26a4b56.js",
-    "static/js/2.686b2006.chunk.js",
-    "static/css/main.87a707f7.chunk.css",
-    "static/js/main.33402b14.chunk.js"
+    "static/js/runtime-main.4b50946e.js",
+    "static/js/2.1b3f83bc.chunk.js",
+    "static/js/main.6a42af48.chunk.js"
   ]
 }
