@@ -5,7 +5,7 @@ export const icons = {
   // tslint:disable-next-line:max-line-length
   check: `50% no-repeat url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjIwLjM0OXB4IiBoZWlnaHQ9IjE1LjgyNnB4IiB2aWV3Qm94PSIwIDAgMjAuMzQ5IDE1LjgyNiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjAuMzQ5IDE1LjgyNiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxwb2x5Z29uIGZpbGw9IiNmZmZmZmYiIHBvaW50cz0iMTguMjI4LDAgMjAuMzQ5LDIuMTIyIDYuNjQ0LDE1LjgyNiAwLDkuMTgyIDIuMTIyLDcuMDYxIDYuNjQ0LDExLjU4MyAiLz4gPC9zdmc+)`,
   // tslint:disable-next-line:max-line-length
-  cross: `50% no-repeat  url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE1Ljg3M3B4IiBoZWlnaHQ9IjE1Ljg5MXB4IiB2aWV3Qm94PSIwIDAgMTUuODczIDE1Ljg5MSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTUuODczIDE1Ljg5MSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxwb2x5Z29uIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjZGE0MTIxIiBwb2ludHM9IjE0LjE4NiwwIDE1Ljg3MywxLjc0IDkuNjg2LDcuOTYzIDE1LjgzOCwxNC4xNSAxNC4xNSwxNS44OTEgNy45MjgsOS43MjEgMS44MTEsMTUuODkxIDAuMDM1LDE0LjE1IDYuMTg4LDcuOTYzIDAsMS43NzUgMS43NTgsMCA3Ljk2Myw2LjI0ICIvPiA8L3N2Zz4=)`
+  cross: `50% no-repeat  url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE1Ljg3M3B4IiBoZWlnaHQ9IjE1Ljg5MXB4IiB2aWV3Qm94PSIwIDAgMTUuODczIDE1Ljg5MSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTUuODczIDE1Ljg5MSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+IDxwb2x5Z29uIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjZGE0MTIxIiBwb2ludHM9IjE0LjE4NiwwIDE1Ljg3MywxLjc0IDkuNjg2LDcuOTYzIDE1LjgzOCwxNC4xNSAxNC4xNSwxNS44OTEgNy45MjgsOS43MjEgMS44MTEsMTUuODkxIDAuMDM1LDE0LjE1IDYuMTg4LDcuOTYzIDAsMS43NzUgMS43NTgsMCA3Ljk2Myw2LjI0ICIvPiA8L3N2Zz4=)`,
 };
 
 export const Shell = styled.div`
@@ -80,7 +80,7 @@ export const SummaryCard = styled(Card)`
   color: ${getColor("white")};
   font-size: 1.2em;
   line-height: 1.6em;
-  background-color: ${getColor(props => props.color ?? "white")};
+  background-color: ${getColor((props) => props.color ?? "white")};
   text-align: center;
 `;
 
@@ -104,8 +104,9 @@ export const QuestionNumber = styled.div`
   display: inline-block;
   text-align: center;
   vertical-align: middle;
-  padding: ${props => (String(props.children).length > 1 ? "0.2em" : "")};
-  font-size: ${props => (String(props.children).length > 1 ? "1em" : "1.2em")};
+  padding: ${(props) => (String(props.children).length > 1 ? "0.2em" : "")};
+  font-size: ${(props) =>
+    String(props.children).length > 1 ? "1em" : "1.2em"};
 `;
 
 export const QuestionText = styled.div`
@@ -117,7 +118,7 @@ export const Image = styled.img<{ round?: boolean }>`
   width: 8em;
   height: 8em;
   overflow: hidden;
-  border-radius: ${getRadius(props => (props.round ? "round" : "md"))};
+  border-radius: ${getRadius((props) => (props.round ? "round" : "md"))};
   border: solid 0.2em ${getColor("white")};
   transition: border-radius 0.2s linear;
 `;
@@ -131,7 +132,7 @@ interface OptionProps {
 }
 
 export const Option = styled.div<OptionProps>`
-  display: ${props =>
+  display: ${(props) =>
     props.isAnswered
       ? props.isSelected || props.isCorrect
         ? "flex"
@@ -139,22 +140,23 @@ export const Option = styled.div<OptionProps>`
       : "flex"};
   padding: 0.6em 0.4em;
   margin: 0.2em 0;
+  font-weight: bold;
   align-items: center;
   border-radius: ${getRadius("md")};
-  cursor: ${props => (props.isAnswered ? "" : "pointer")};
-  background-color: ${getColor(props =>
+  cursor: ${(props) => (props.isAnswered ? "" : "pointer")};
+  background-color: ${getColor((props) =>
     props.isAnswered && props.isSelected
       ? props.isCorrect
         ? "positive"
         : "negative"
       : "muted"
   )};
-  color: ${getColor(props =>
+  color: ${getColor((props) =>
     props.isAnswered && props.isSelected ? "white" : "black"
   )};
   transition: background-color 0.3s;
   :hover {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.isAnswered ? "" : props.theme.colors.gray};
   }
   :last-of-type {
@@ -178,7 +180,7 @@ interface PillProps {
 }
 
 const pillBackground = css<PillProps>`
-  ${props =>
+  ${(props) =>
     props.isAnswered && (props.isSelected || props.isCorrect)
       ? props.isCorrect
         ? `${props.theme.colors.positive} ${icons.check}`
@@ -187,7 +189,7 @@ const pillBackground = css<PillProps>`
 `;
 
 const pillBorder = css<PillProps>`
-  ${props =>
+  ${(props) =>
     props.isAnswered && (props.isSelected || props.isCorrect)
       ? props.isCorrect
         ? `solid 0.1em ${props.theme.colors.white}`
@@ -234,12 +236,12 @@ export const ButtonIcon = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-weight: 700;
+  font-weight: bold;
   font-size: 1.2em;
 `;
 
 export const NextButton = styled.button<{ color?: Color }>`
-  background-color: ${getColor(props => props.color ?? "secondary")};
+  background-color: ${getColor((props) => props.color ?? "secondary")};
   font-size: 1.8em;
   color: white;
   border: none;
