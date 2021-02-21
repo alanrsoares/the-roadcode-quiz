@@ -68,6 +68,7 @@
     "eslint-plugin-prettier": "3.2.0",
     "gh-pages": "^3.1.0",
     "husky": "^5.0.9",
+    "invariant": "^2.2.4",
     "levenary": "^1.1.1",
     "lint-staged": "^10.5.4",
     "prettier": "^2.0.5",
