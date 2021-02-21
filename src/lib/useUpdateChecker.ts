@@ -44,7 +44,7 @@ export const fetchWithTimeout = (
 export async function purgeCache() {
   if (window.caches) {
     const keys = await window.caches.keys();
-    const deleteKeys = keys.map(key => window.caches.delete(key));
+    const deleteKeys = keys.map((key) => window.caches.delete(key));
 
     await Promise.all(deleteKeys);
   }

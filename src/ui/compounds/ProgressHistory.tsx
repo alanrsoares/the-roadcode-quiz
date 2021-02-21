@@ -32,10 +32,10 @@ interface BarProps {
 }
 
 const Bar = styled.div<BarProps>`
-  background-color: ${props => props.theme.colors[props.color]};
+  background-color: ${(props) => props.theme.colors[props.color]};
   color: ${getColor("white")};
   align-self: flex-end;
-  height: calc(${props => ratio(props.total)(props.value)}%);
+  height: calc(${(props) => ratio(props.total)(props.value)}%);
   width: calc(50%);
   border-top-right-radius: ${getRadius("md")};
   border-top-left-radius: ${getRadius("md")};

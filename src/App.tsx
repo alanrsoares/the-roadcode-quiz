@@ -9,7 +9,7 @@ import {
   Footer,
   NextButton,
   Shell,
-  SummaryCard
+  SummaryCard,
 } from "ui/components";
 import { Progress, QuestionItem } from "ui/compounds";
 
@@ -42,7 +42,7 @@ const INITIAL_STATE: State = {
   questions: [],
   questionsAmount: 35,
   status: "IN_PROGRESS",
-  selectedOption: null
+  selectedOption: null,
 };
 
 interface Props {
@@ -61,7 +61,7 @@ function useActionHandlers(
               ...state,
               index: state.index + 1,
               isAnswered: false,
-              selectedOption: null
+              selectedOption: null,
             }
           : state
       );
@@ -70,7 +70,7 @@ function useActionHandlers(
       setState((state: State) => ({
         ...INITIAL_STATE,
         questionsAmount: state.questionsAmount,
-        questions: shuffle(questions).slice(0, state.questionsAmount)
+        questions: shuffle(questions).slice(0, state.questionsAmount),
       }));
     },
     onOptionSelection(selectedOption: string, isCorrect: boolean) {
@@ -92,17 +92,17 @@ function useActionHandlers(
           incorrectCount,
           isDone: isDone || isFailed,
           isAnswered: true,
-          status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS"
+          status: isFailed ? "FAILED" : isDone ? "PASSED" : "IN_PROGRESS",
         };
       });
-    }
+    },
   };
 }
 
 export default function App(props: Props) {
   const defaultState = {
     ...INITIAL_STATE,
-    questions: props.questions.slice(0, INITIAL_STATE.questionsAmount)
+    questions: props.questions.slice(0, INITIAL_STATE.questionsAmount),
   };
 
   const [state, setState] = useCachedState<State>("/state", defaultState);

@@ -1,6 +1,6 @@
 const LS_KEY = "@THE_ROAD_QUIZ";
 
-export default {
+const StorageAdapter = {
   persist<T extends {}>(value: T, path: string = "") {
     const key = `${LS_KEY}${path}`;
 
@@ -12,5 +12,7 @@ export default {
     const value = localStorage.getItem(key);
 
     return value !== null ? JSON.parse(value) : defaultValue;
-  }
+  },
 };
+
+export default StorageAdapter;

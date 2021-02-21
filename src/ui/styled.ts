@@ -4,7 +4,7 @@ import styled, {
   ThemedStyledInterface,
   ThemeProps as BaseThemeProps,
   // @ts-ignore (ignore while @types/styled-components isn't up to date)
-  useTheme as baseUseTheme
+  useTheme as baseUseTheme,
 } from "styled-components";
 
 import { Theme } from "ui/theme";

@@ -21,8 +21,8 @@ export interface ProgressBarProps {
 
 const ProgressBar = styled.div<ProgressBarProps>`
   height: 1.8em;
-  background-color: ${getColor(props => props.color)};
-  width: ${props => props.ratio}%;
+  background-color: ${getColor((props) => props.color)};
+  width: ${(props) => props.ratio}%;
   transition: 0.3s;
 `;
 
@@ -55,17 +55,17 @@ const Progress: React.FC<Props> = (props: Props) => {
   const ratios: ProgressBarProps[] = [
     {
       ratio: incorrectRatio,
-      color: "negative"
+      color: "negative",
     },
     {
       ratio: correctRatio,
-      color: "positive"
-    }
+      color: "positive",
+    },
   ];
 
   return (
     <ProgressContainer>
-      {ratios.map(x => (
+      {ratios.map((x) => (
         <ProgressBar key={x.color} {...x} />
       ))}
       <ProgressText>
