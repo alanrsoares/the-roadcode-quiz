@@ -261,9 +261,9 @@ export const NextButton = styled.button<{ color?: Color }>`
   @media screen and (max-width: 600px) {
     align-self: flex-end;
     position: fixed;
+    bottom: 1rem;
     width: 92%;
-    margin: 0 4%;
-    margin-bottom: 4%;
+    margin: 0 1rem;
     box-shadow: ${getShadow("default")};
     opacity: 0.95;
   }
