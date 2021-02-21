@@ -263,7 +263,7 @@ export const NextButton = styled.button<{ color?: Color }>`
     position: fixed;
     width: 92%;
     margin: 0 4%;
-    margin-top: -4%;
+    margin-bottom: 4%;
     box-shadow: ${getShadow("default")};
     opacity: 0.95;
   }
