@@ -50,6 +50,10 @@ export default function QuestionItem(props: Props) {
 
   const answerKeys = Object.keys(props.answers);
 
+  const { uri } = props.image;
+
+  const imageSrc = uri.startsWith("http") ? uri : `/assets/${uri}`;
+
   return (
     <Card>
       <QuestionContainer>
@@ -57,11 +61,7 @@ export default function QuestionItem(props: Props) {
           <QuestionNumber>{props.index}</QuestionNumber> {props.question}
         </QuestionText>
         <ImageWrapper onClick={handleToggleRoundImage}>
-          <Image
-            round={showRoundImage}
-            alt="question's image"
-            src={`/assets/${props.image.uri}`}
-          />
+          <Image round={showRoundImage} alt="question's image" src={imageSrc} />
         </ImageWrapper>
       </QuestionContainer>
       {answerKeys.map((key: string) => (
