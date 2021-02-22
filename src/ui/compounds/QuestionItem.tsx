@@ -60,7 +60,7 @@ export default function QuestionItem(props: Props) {
           <Image
             round={showRoundImage}
             alt="question's image"
-            src={props.image.uri}
+            src={`/assets/${props.image.uri}`}
           />
         </ImageWrapper>
       </QuestionContainer>
