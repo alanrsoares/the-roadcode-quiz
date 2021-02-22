@@ -18,7 +18,7 @@
     "prebuild": "yarn generate-build-version && yarn write-app-name-to-manifest",
     "generate-build-version": "node scripts/generate-build-version",
     "write-app-name-to-manifest": "node scripts/write-app-name-to-manifest",
-    "sync": "node node_modules/aa-db/dist/sync.js",
+    "sync": "scripts/sync-db.sh",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable"
