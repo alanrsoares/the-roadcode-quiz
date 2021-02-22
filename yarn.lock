@@ -2223,14 +2223,15 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-aa-db@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/aa-db/-/aa-db-1.1.1.tgz#f38c456f9c41349b0163363584c75f2f1d65f687"
-  integrity sha512-fQKtWD9KiKGHsSDEFN8MhSQFmJaScvGGIEnkjtJOHtmI0WSG7eaOlYi+XHZTAMyExGPKKP2vgAyz3TDkzU1z0Q==
+aa-db@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/aa-db/-/aa-db-2.0.0.tgz#190d468a61b56506faf83b8172ea73a653a30b6f"
+  integrity sha512-rd6Jgu3MJeAoh+8+Y/RNDvZa9nlMB3SYBT8AujzCrqg2tMXlabjqW3XDxpvgccWyMTaKydsDlgIIDUZ/XwuCow==
   dependencies:
     chalk "^4.1.0"
     isomorphic-fetch "^3.0.0"
     lowdb "^1.0.0"
+    node-fetch "^2.6.1"
 
 abab@^2.0.3:
   version "2.0.5"
