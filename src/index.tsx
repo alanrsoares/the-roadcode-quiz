@@ -1,14 +1,14 @@
-import React, { StrictMode } from "react";
+import React, { Suspense } from "react";
 import { render } from "react-dom";
-import { ThemeProvider } from "styled-components";
 
-import { cache as questions } from "db.json";
+import reportWebVitals from "reportWebVitals";
 import registerServiceWorker from "registerServiceWorker";
 
-import App from "App";
-import theme from "ui/theme";
+import Splash from "ui/compounds/Splash";
 
 import { version } from "../package.json";
+
+const App = React.lazy(/* webpackChunkName: "app" */ () => import("App"));
 
 // add appVersion to global scope
 global.appVersion = version;
@@ -16,13 +16,27 @@ global.appVersion = version;
 const rootElement = document.getElementById("root");
 
 const app = (
-  <StrictMode>
-    <ThemeProvider theme={theme}>
-      <App questions={questions} />
-    </ThemeProvider>
-  </StrictMode>
+  <Suspense fallback={<Splash />}>
+    <App />
+  </Suspense>
 );
 
 render(app, rootElement);
+
+declare global {
+  interface Window {
+    gtag(method: string, event: string, meta: Record<string, any>): void;
+  }
+}
+
+reportWebVitals(({ id, name, value }) => {
+  window.gtag("send", "event", {
+    eventCategory: "Web Vitals",
+    eventAction: name,
+    eventValue: Math.round(name === "CLS" ? value * 1000 : value), // values must be integers
+    eventLabel: id, // id unique to current page load
+    nonInteraction: true, // avoids affecting bounce rate
+  });
+});
 
 registerServiceWorker();

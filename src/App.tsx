@@ -1,6 +1,11 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, StrictMode } from "react";
+import { ThemeProvider } from "styled-components";
 
 import { IQuestionItem } from "types";
+
+import useUpdateChecker from "lib/useUpdateChecker";
+import { useCachedState } from "lib/hooks";
+import { shuffle } from "helpers";
 
 import {
   AppContainer,
@@ -12,10 +17,9 @@ import {
   SummaryCard,
 } from "ui/components";
 import { Progress, QuestionItem } from "ui/compounds";
+import theme from "ui/theme";
 
-import useUpdateChecker from "lib/useUpdateChecker";
-import { shuffle } from "helpers";
-import { useCachedState } from "lib/hooks";
+import { cache as questions } from "db.json";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 
@@ -99,7 +103,7 @@ function useActionHandlers(
   };
 }
 
-export default function App(props: Props) {
+const App: React.FC<Props> = (props) => {
   const defaultState = {
     ...INITIAL_STATE,
     questions: props.questions.slice(0, INITIAL_STATE.questionsAmount),
@@ -172,5 +176,15 @@ export default function App(props: Props) {
         </Footer>
       </AppContainer>
     </Shell>
+  );
+};
+
+export default function WithProviders() {
+  return (
+    <StrictMode>
+      <ThemeProvider theme={theme}>
+        <App questions={questions} />
+      </ThemeProvider>
+    </StrictMode>
   );
 }

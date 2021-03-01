@@ -1,0 +1,37 @@
+@keyframes FadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes Pulse {
+  0% {
+    opacity: 20%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 20%;
+  }
+}
+
+.Pulser {
+  font-size: 2rem;
+  animation: Pulse 1.5s ease-in-out infinite;
+}
+
+.FullScreen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  background-color: #ffd400;
+  animation: FadeIn 1s ease-in-out;
+}
