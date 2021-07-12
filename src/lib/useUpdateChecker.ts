@@ -27,19 +27,21 @@ export function semverGreaterThan(
  * @param {number} timeout  - timeout in milliseconds
  * @param {Function} [onTimeout] - timeout callback
  */
-export const fetchWithTimeout = (
-  timeout: number,
-  onTimeout: () => void = () => {
-    throw new Error("Timeout exceeded");
-  }
-) => async (url: string) => {
-  // this forces a 5s timeout in case the request hangs
-  const timeoutHandle = window.setTimeout(onTimeout, timeout);
-  const response = await fetch(url);
-  // cancels the timeout once the request is resolved
-  window.clearTimeout(timeoutHandle);
-  return response;
-};
+export const fetchWithTimeout =
+  (
+    timeout: number,
+    onTimeout: () => void = () => {
+      throw new Error("Timeout exceeded");
+    }
+  ) =>
+  async (url: string) => {
+    // this forces a 5s timeout in case the request hangs
+    const timeoutHandle = window.setTimeout(onTimeout, timeout);
+    const response = await fetch(url);
+    // cancels the timeout once the request is resolved
+    window.clearTimeout(timeoutHandle);
+    return response;
+  };
 
 export async function purgeCache() {
   if (window.caches) {

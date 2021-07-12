@@ -1,35 +1,35 @@
 Arguments: 
-  /Users/alanrsoares/.nvm/versions/node/v12.16.3/bin/node /Users/alanrsoares/.yarn/bin/yarn.js add web-bitals
+  /Users/alanrsoares/.nvm/versions/node/v16.0.0/bin/node /Users/alanrsoares/.yarn/bin/yarn.js add tailwidcss
 
 PATH: 
-  /Users/alanrsoares/.rbenv/shims:/Users/alanrsoares/.yarn/bin:/Users/alanrsoares/.config/yarn/global/node_modules/.bin:/Users/alanrsoares/.cargo/bin:/Users/alanrsoares/.nvm/versions/node/v12.16.3/bin:/Users/alanrsoares/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/alanrsoares/.rbenv/shims:/Users/alanrsoares/.yarn/bin:/Users/alanrsoares/.config/yarn/global/node_modules/.bin:/Users/alanrsoares/.cargo/bin:/Users/alanrsoares/.nvm/versions/node/v12.16.3/bin:/Users/alanrsoares/Library/Android/sdk/emulator:/Users/alanrsoares/Library/Android/sdk/platform-tools:/Users/alanrsoares/.dotnet/tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/alanrsoares/.fastlane/bin:/Users/alanrsoares/dev/flutter/bin:/Users/alanrsoares/.rvm/bin:/usr/local/bin:/Users/alanrsoares/Library/Android/sdk/emulator:/Users/alanrsoares/Library/Android/sdk/platform-tools:/Users/alanrsoares/.dotnet/tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/alanrsoares/.fastlane/bin:/Users/alanrsoares/dev/flutter/bin:/Users/alanrsoares/.rvm/bin
+  /Users/alanrsoares/.rbenv/shims:/Users/alanrsoares/.yarn/bin:/Users/alanrsoares/.config/yarn/global/node_modules/.bin:/Users/alanrsoares/.cargo/bin:/Users/alanrsoares/.nvm/versions/node/v16.0.0/bin:/Users/alanrsoares/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/alanrsoares/.rbenv/shims:/Users/alanrsoares/.yarn/bin:/Users/alanrsoares/.config/yarn/global/node_modules/.bin:/Users/alanrsoares/.cargo/bin:/Users/alanrsoares/.nvm/versions/node/v16.0.0/bin:/Users/alanrsoares/Library/Android/sdk/emulator:/Users/alanrsoares/Library/Android/sdk/platform-tools:/Users/alanrsoares/.dotnet/tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/alanrsoares/.fastlane/bin:/Users/alanrsoares/dev/flutter/bin:/Users/alanrsoares/.rvm/bin:/usr/local/bin:/Users/alanrsoares/Library/Android/sdk/emulator:/Users/alanrsoares/Library/Android/sdk/platform-tools:/Users/alanrsoares/.dotnet/tools:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/Users/alanrsoares/.fastlane/bin:/Users/alanrsoares/dev/flutter/bin:/Users/alanrsoares/.rvm/bin
 
 Yarn version: 
   1.22.5
 
 Node version: 
-  12.16.3
+  16.0.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/web-bitals: Not found
+  Error: https://registry.yarnpkg.com/tailwidcss: Not found
       at Request.params.callback [as _callback] (/Users/alanrsoares/.yarn/lib/cli.js:66988:18)
       at Request.self.callback (/Users/alanrsoares/.yarn/lib/cli.js:140749:22)
-      at Request.emit (events.js:310:20)
+      at Request.emit (node:events:365:28)
       at Request.<anonymous> (/Users/alanrsoares/.yarn/lib/cli.js:141721:10)
-      at Request.emit (events.js:310:20)
+      at Request.emit (node:events:365:28)
       at IncomingMessage.<anonymous> (/Users/alanrsoares/.yarn/lib/cli.js:141643:12)
-      at Object.onceWrapper (events.js:416:28)
-      at IncomingMessage.emit (events.js:322:22)
-      at endReadableNT (_stream_readable.js:1187:12)
-      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+      at Object.onceWrapper (node:events:471:28)
+      at IncomingMessage.emit (node:events:377:35)
+      at endReadableNT (node:internal/streams/readable:1312:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
     "name": "the-roadcode-quiz",
-    "version": "1.5.1",
+    "version": "1.6.1",
     "repository": "git@github.com:alanrsoares/the-roadcode-quiz.git",
     "description": "NZ's Road Code Driving Theory Practice Quiz",
     "keywords": [],
@@ -81,10 +81,11 @@ npm manifest:
       ]
     },
     "dependencies": {
-      "react": "^17.0.1",
+      "react": "^17.0.2",
       "react-app-polyfill": "^2.0.0",
-      "react-dom": "^17.0.1",
-      "styled-components": "^5.2.1"
+      "react-dom": "^17.0.2",
+      "styled-components": "^5.3.0",
+      "web-vitals": "^1.1.2"
     },
     "devDependencies": {
       "@babel/helper-define-map": "^7.12.13",
@@ -92,35 +93,35 @@ npm manifest:
       "@testing-library/jest-dom": "^5.11.9",
       "@testing-library/react": "^11.2.5",
       "@testing-library/user-event": "^12.7.1",
-      "@types/jest": "^25.1.3",
-      "@types/node": "^13.7.4",
-      "@types/ramda": "^0.27.38",
-      "@types/react": "^17.0.2",
-      "@types/react-dom": "^17.0.1",
-      "@types/styled-components": "^5.1.7",
-      "@typescript-eslint/eslint-plugin": "^4.0.0",
-      "@typescript-eslint/parser": "^4.16.1",
+      "@types/jest": "^25.2.3",
+      "@types/node": "^13.13.52",
+      "@types/ramda": "^0.27.44",
+      "@types/react": "^17.0.14",
+      "@types/react-dom": "^17.0.9",
+      "@types/styled-components": "^5.1.11",
+      "@typescript-eslint/eslint-plugin": "^4.28.2",
+      "@typescript-eslint/parser": "^4.28.2",
       "aa-db": "^2.0.0",
       "babel-eslint": "^10.1.0",
-      "eslint": "^7.21.0",
+      "eslint": "^7.30.0",
       "eslint-config-prettier": "7.0.0",
       "eslint-config-react-app": "^6.0.0",
-      "eslint-plugin-import": "^2.22.0",
-      "eslint-plugin-jsx-a11y": "^6.3.1",
+      "eslint-plugin-import": "^2.23.4",
+      "eslint-plugin-jsx-a11y": "^6.4.1",
       "eslint-plugin-prettier": "3.2.0",
-      "eslint-plugin-react": "^7.20.3",
-      "eslint-plugin-react-hooks": "^4.0.8",
-      "gh-pages": "^3.1.0",
+      "eslint-plugin-react": "^7.24.0",
+      "eslint-plugin-react-hooks": "^4.2.0",
+      "gh-pages": "^3.2.3",
       "husky": "5.1.2",
       "invariant": "^2.2.4",
       "levenary": "^1.1.1",
       "lint-staged": "^10.5.4",
       "pinst": "^2.1.6",
-      "prettier": "^2.0.5",
-      "react-is": "^17.0.1",
+      "prettier": "^2.3.2",
+      "react-is": "^17.0.2",
       "react-scripts": "4.0.3",
-      "source-map-explorer": "^2.4.2",
-      "typescript": "^4.2.2",
+      "source-map-explorer": "^2.5.2",
+      "typescript": "^4.3.5",
       "typescript-styled-plugin": "^0.15.0"
     },
     "license": "MIT"
@@ -413,9 +414,9 @@ Lockfile:
       "@babel/types" "^7.12.17"
   
   "@babel/highlight@^7.10.4", "@babel/highlight@^7.12.13":
-    version "7.12.13"
-    resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.12.13.tgz#8ab538393e00370b26271b01fa08f7f27f2e795c"
-    integrity sha512-kocDQvIbgMKlWxXe9fof3TQ+gkIPOUSEYhJjqUjvKMez3krV7vbzYCDq39Oj11UAVK7JqPVGQPlgE85dPNlQww==
+    version "7.13.10"
+    resolved "https://registry.yarnpkg.com/@babel/highlight/-/highlight-7.13.10.tgz#a8b2a66148f5b27d666b15d81774347a731d52d1"
+    integrity sha512-5aPpe5XQPzflQrFwL1/QoeHkP2MsA4JCntcXHRhEsdsfPVkvPi2w7Qix4iV7t5S/oC9OodGrggd8aco1g3SZFg==
     dependencies:
       "@babel/helper-validator-identifier" "^7.12.11"
       chalk "^2.0.0"
@@ -3438,10 +3439,15 @@ Lockfile:
       lodash.memoize "^4.1.2"
       lodash.uniq "^4.5.0"
   
-  caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001181:
+  caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001181:
     version "1.0.30001190"
     resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001190.tgz#acc6d4a53c68be16cfc314d55c9cab637e558cba"
     integrity sha512-62KVw474IK8E+bACBYhRS0/L6o/1oeAVkpF2WetjV58S5vkzNh0/Rz3lD8D4YCbOTqi0/aD4X3LtoP7V5xnuAg==
+  
+  caniuse-lite@^1.0.30001125:
+    version "1.0.30001198"
+    resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001198.tgz#ed2d9b5f060322ba2efa42afdc56dee3255473f4"
+    integrity sha512-r5GGgESqOPZzwvdLVER374FpQu2WluCF1Z2DSiFJ89KSmGjT0LVKjgv4NcAqHmGWF9ihNpqRI9KXO9Ex4sKsgA==
   
   capture-exit@^2.0.0:
     version "2.0.0"
@@ -4605,7 +4611,12 @@ Lockfile:
     dependencies:
       jake "^10.6.1"
   
-  electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.649:
+  electron-to-chromium@^1.3.564:
+    version "1.3.686"
+    resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.686.tgz#6c5bea31e463c45509b5a0c551b414bb4897cff0"
+    integrity sha512-SOJT3m00NX/gT3sD6E3PcZX6u3+zUmQq4+yp8QCKLOwf2ECnmh9eAY+eonhC/AAu5Gg2WrtUU2m7/+e85O0l6A==
+  
+  electron-to-chromium@^1.3.649:
     version "1.3.671"
     resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.671.tgz#8feaed6eae42d279fa4611f58c42a5a1eb81b2a0"
     integrity sha512-RTD97QkdrJKaKwRv9h/wGAaoR2lGxNXEcBXS31vjitgTPwTWAbLdS7cEsBK68eEQy7p6YyT8D5BxBEYHu2SuwQ==
@@ -4857,7 +4868,7 @@ Lockfile:
       lodash "^4.17.15"
       string-natural-compare "^3.0.1"
   
-  eslint-plugin-import@^2.22.0, eslint-plugin-import@^2.22.1:
+  eslint-plugin-import@^2.22.1:
     version "2.22.1"
     resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.22.1.tgz#0896c7e6a0cf44109a2d97b95903c2bb689d7702"
     integrity sha512-8K7JjINHOpH64ozkAhpT3sd+FswIZTfMZTjdx052pnWrgRCVfp8op9tbjpAk3DdUeI/Ba4C8OjdC0r90erHEOw==
@@ -4883,7 +4894,7 @@ Lockfile:
     dependencies:
       "@typescript-eslint/experimental-utils" "^4.0.1"
   
-  eslint-plugin-jsx-a11y@^6.3.1:
+  eslint-plugin-jsx-a11y@^6.3.1, eslint-plugin-jsx-a11y@^6.4.1:
     version "6.4.1"
     resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.4.1.tgz#a2d84caa49756942f42f1ffab9002436391718fd"
     integrity sha512-0rGPJBbwHoGNPU73/QCLP/vveMlM1b1Z9PponxO87jfr6tuH5ligXbDT6nHSSzBC8ovX2Z+BQu7Bk5D/Xgq9zg==
@@ -4907,12 +4918,12 @@ Lockfile:
     dependencies:
       prettier-linter-helpers "^1.0.0"
   
-  eslint-plugin-react-hooks@^4.0.8, eslint-plugin-react-hooks@^4.2.0:
+  eslint-plugin-react-hooks@^4.2.0:
     version "4.2.0"
     resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
     integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
   
-  eslint-plugin-react@^7.20.3, eslint-plugin-react@^7.21.5:
+  eslint-plugin-react@^7.21.5, eslint-plugin-react@^7.22.0:
     version "7.22.0"
     resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.22.0.tgz#3d1c542d1d3169c45421c1215d9470e341707269"
     integrity sha512-p30tuX3VS+NWv9nQot9xIGAHBXR0+xJVaZriEsHoJrASGCJZDJ8JLNM0YqKqI0AKm6Uxaa1VUHoNEibxRCMQHA==
@@ -5332,9 +5343,9 @@ Lockfile:
     integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
   
   fastq@^1.6.0:
-    version "1.10.1"
-    resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.10.1.tgz#8b8f2ac8bf3632d67afcd65dac248d5fdc45385e"
-    integrity sha512-AWuv6Ery3pM+dY7LYS8YIaCiQvUaos9OB1RyNgaOWnaX+Tik7Onvcsf8x8c+YtDeT0maYLniBip2hox5KtEXXA==
+    version "1.11.0"
+    resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.11.0.tgz#bb9fb955a07130a918eb63c1f5161cc32a5d0858"
+    integrity sha512-7Eczs8gIPDrVzT+EksYBcupqMyxSHXXrHOLRRxU2/DicV8789MRBRR8+Hc2uWzUupOs4YS4JzBmBxjjCVBxD/g==
     dependencies:
       reusify "^1.0.4"
   
@@ -5730,10 +5741,17 @@ Lockfile:
       is-glob "^3.1.0"
       path-dirname "^1.0.0"
   
-  glob-parent@^5.0.0, glob-parent@^5.1.0, glob-parent@~5.1.0:
+  glob-parent@^5.0.0, glob-parent@~5.1.0:
     version "5.1.1"
     resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"
     integrity sha512-FnI+VGOpnlGHWZxthPGR+QhR78fuiK0sNLkHQv+bL9fQi57lNNdquIbna/WrfROrolq8GK5Ek6BiMwqL/voRYQ==
+    dependencies:
+      is-glob "^4.0.1"
+  
+  glob-parent@^5.1.0:
+    version "5.1.2"
+    resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
+    integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
     dependencies:
       is-glob "^4.0.1"
   
@@ -8089,7 +8107,12 @@ Lockfile:
       uuid "^8.3.0"
       which "^2.0.2"
   
-  node-releases@^1.1.61, node-releases@^1.1.70:
+  node-releases@^1.1.61:
+    version "1.1.71"
+    resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.71.tgz#cb1334b179896b1c89ecfdd4b725fb7bbdfc7dbb"
+    integrity sha512-zR6HoT6LrLCRBwukmrVbHv0EpEQjksO6GmFcZQQuCAy139BEsoVKPYnf3jongYW83fAa1torLGYwxxky/p28sg==
+  
+  node-releases@^1.1.70:
     version "1.1.70"
     resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.70.tgz#66e0ed0273aa65666d7fe78febe7634875426a08"
     integrity sha512-Slf2s69+2/uAD79pVVQo8uSiC34+g8GWY8UH2Qtqv34ZfhYrxpYpfzs9Js9d6O0mbDmALuxaTlplnBTnSELcrw==
@@ -9649,9 +9672,9 @@ Lockfile:
       whatwg-fetch "^3.4.1"
   
   react-dev-utils@^11.0.3:
-    version "11.0.3"
-    resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.3.tgz#b61ed499c7d74f447d4faddcc547e5e671e97c08"
-    integrity sha512-4lEA5gF4OHrcJLMUV1t+4XbNDiJbsAWCH5Z2uqlTqW6dD7Cf5nEASkeXrCI/Mz83sI2o527oBIFKVMXtRf1Vtg==
+    version "11.0.4"
+    resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
+    integrity sha512-dx0LvIGHcOPtKbeiSUM4jqpBl3TcY7CDjZdfOIcKeznE7BWr9dg0iPG90G5yfVQ+p/rGNMXdbfStvzQZEVEi4A==
     dependencies:
       "@babel/code-frame" "7.10.4"
       address "1.1.2"
@@ -11840,6 +11863,11 @@ Lockfile:
     integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
     dependencies:
       minimalistic-assert "^1.0.0"
+  
+  web-vitals@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-1.1.0.tgz#7f410d9a1f7a1cd5d952806b45776204b47dc274"
+    integrity sha512-1cx54eRxY/+M0KNKdNpNnuXAXG+vJEvwScV4DiV9rOYDguHoeDIzm09ghBohOPtkqPO5OtPC14FWkNva3SDisg==
   
   webidl-conversions@^5.0.0:
     version "5.0.0"
