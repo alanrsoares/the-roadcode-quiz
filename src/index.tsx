@@ -6,12 +6,12 @@ import registerServiceWorker from "registerServiceWorker";
 
 import Splash from "ui/compounds/Splash";
 
-import { version } from "../package.json";
+import pkgJson from "../package.json";
 
 const App = React.lazy(/* webpackChunkName: "app" */ () => import("App"));
 
 // add appVersion to global scope
-global.appVersion = version;
+global.appVersion = pkgJson.version;
 
 const rootElement = document.getElementById("root");
 

@@ -71,7 +71,7 @@ export async function checkForAppUpdates() {
  * Forces window to reload
  */
 export function forceReload() {
-  window.location.reload(true);
+  window.location.reload();
 }
 
 export async function tryInstallUpdate() {

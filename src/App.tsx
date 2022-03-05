@@ -19,7 +19,7 @@ import {
 import { Progress, QuestionItem } from "ui/compounds";
 import theme from "ui/theme";
 
-import { cache as questions } from "db.json";
+import db from "db.json";
 
 type Status = "IN_PROGRESS" | "PASSED" | "FAILED";
 
@@ -183,7 +183,7 @@ export default function WithProviders() {
   return (
     <StrictMode>
       <ThemeProvider theme={theme}>
-        <App questions={questions} />
+        <App questions={db.cache} />
       </ThemeProvider>
     </StrictMode>
   );
