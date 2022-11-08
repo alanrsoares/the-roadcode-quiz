@@ -1,6 +1,6 @@
 const LS_KEY = "@THE_ROAD_QUIZ";
 
-class StorageAdapter {
+export class StorageAdapter {
   persist<T extends {}>(value: T, path: string = "") {
     const key = `${LS_KEY}${path}`;
 
