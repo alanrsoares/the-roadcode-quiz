@@ -14,6 +14,7 @@ export const Shell = styled.div`
   font-family: Lato, Arial, Helvetica, sans-serif;
   color: ${getColor("black")};
   min-height: 100vh;
+  min-height: 100dvh;
   font-size: 18px;
   background-size: cover;
   background-repeat: no-repeat;
