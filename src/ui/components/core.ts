@@ -41,12 +41,14 @@ export const AppContainer = styled.div`
   padding-top: 1.8rem;
   max-width: 414px;
   flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const AppHeader = styled.header`
   font-size: 2rem;
   text-align: center;
-  color: ${getColor("secondary")};
+  color: ${getColor("white")};
   font-weight: 900;
   padding: 0.6rem;
   @media screen and (max-width: 600px) {
@@ -54,6 +56,7 @@ export const AppHeader = styled.header`
     color: ${getColor("white")};
     background-color: ${getColor("secondary")};
     padding: 0.4rem;
+    width: 100%;
   }
 `;
 

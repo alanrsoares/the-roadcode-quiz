@@ -15,4 +15,6 @@ class StorageAdapter {
   }
 }
 
-export default new StorageAdapter();
+const storageAdapter = new StorageAdapter();
+
+export default storageAdapter;
