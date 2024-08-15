@@ -1,5 +1,6 @@
+import { ring } from "lib/ring-mixin";
 import styled, { css, getColor, getRadius, getShadow } from "ui/styled";
-import { Color } from "ui/theme";
+import { Color, colors } from "ui/theme";
 
 export const icons = {
   // tslint:disable-next-line:max-line-length
@@ -276,4 +277,21 @@ export const NextButton = styled.button<{ color?: Color }>`
   &:active {
     opacity: 0.9;
   }
+
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:focus-visible {
+    ${ring({
+      ringWidth: "4px",
+      ringColor: toRGB(colors.secondary),
+      ringOffsetWidth: "2px",
+    })}
+  }
 `;
+
+function toRGB(color: `#${string}`) {
+  return `rgb(${parseInt(color.slice(1, 3), 16)},${parseInt(
+    color.slice(3, 5),
+    16
+  )},${parseInt(color.slice(5, 7), 16)})` as const;
+}
