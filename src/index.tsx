@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import reportWebVitals from "reportWebVitals";
 import registerServiceWorker from "registerServiceWorker";
@@ -13,15 +13,13 @@ const App = React.lazy(/* webpackChunkName: "app" */ () => import("App"));
 // add appVersion to global scope
 global.appVersion = pkgJson.version;
 
-const rootElement = document.getElementById("root");
+const root = createRoot(document.getElementById("root")!);
 
-const app = (
+root.render(
   <Suspense fallback={<Splash />}>
     <App />
   </Suspense>
 );
-
-render(app, rootElement);
 
 declare global {
   interface Window {
